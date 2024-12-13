@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow p-4">
+                    <div class="card-body">
+                        <!-- Logo -->
+                        <div class="text-center mb-4">
+                            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                        </div>
+
+                        <!-- Erreur -->
+                        {% if error %}
+                            <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        <!-- Message si utilisateur connecté -->
+                        {% if app.user %}
+                            <div class="alert alert-info text-center">
+                                Vous êtes connecté en tant que {{ app.user.userIdentifier }}. <a href="{{ path('app_logout') }}" class="text-danger">Déconnexion</a>
+                            </div>
+                        {% endif %}
+
+                        <!-- Formulaire -->
+                        <form method="post" action="{{ path('app_login') }}">
+                            <h3 class="text-center mb-4">Connectez-vous</h3>
+
+                            <div class="mb-3">
+                                <label for="inputEmail" class="form-label">Adresse email</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Entrez votre email" autocomplete="email" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="inputPassword" class="form-label">Mot de passe</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Entrez votre mot de passe" autocomplete="current-password" required>
+                            </div>
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                            <div class="form-check mb-3">
+                                <input type="checkbox" name="_remember_me" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+                            </div>
+
+                            <div class="d-grid">
+                                <button class="btn btn-danger btn-lg" type="submit">
+                                    Se connecter
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Lien pour s'inscrire -->
+                        <div class="text-center mt-4">
+                            <p>Vous n'avez pas de compte ? <a href="{{ path('app_register') }}" class="text-danger">Créer un compte</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

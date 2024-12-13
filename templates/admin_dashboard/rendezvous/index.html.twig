@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Rendez-vous{% endblock %}
+
+{% block body %}
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="bg-dark text-white vh-100">
+            <h5 class="text-center text-uppercase fw-bold mb-4 py-3">Admin Panel</h5>
+            <ul class="nav flex-column px-3">
+                <li class="nav-item mb-3">
+                    <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}" href="{{ path('app_admin_dashboard') }}">
+                        <i class="bi bi-house-door"></i> Tableau de bord
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}" href="{{ path('app_register_admin') }}">
+                        <i class="bi bi-person-plus me-2"></i> Ajouter un Admin
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}" href="{{ path('app_user_index') }}">
+                        <i class="bi bi-person-lines-fill me-2"></i> Gérer les Utilisateurs
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}" href="{{ path('admin_rendezvous') }}">
+                        <i class="bi bi-calendar-check me-2"></i> Gérer les Rendez-vous
+                    </a>
+                </li>
+                <li class="nav-item mb-3">
+                    <a class="nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}" href="{{ path('app_product_index') }}">
+                        <i class="bi bi-box me-2"></i> Gérer les Produits
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1 p-4">
+            <h1 class="text-center mb-4">Gestion des Rendez-vous</h1>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Service</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rdv in rendezVous %}
+                    <tr>
+                        <td>{{ rdv.id }}</td>
+                        <td>{{ rdv.client.email }}</td>
+                        <td>{{ rdv.date|date('d/m/Y H:i') }}</td>
+                        <td>{{ rdv.service }}</td>
+                        <td>
+                            {% if rdv.statut == 'validé' %}
+                                <span class="badge bg-success">Validé</span>
+                            {% elseif rdv.statut == 'annulé' %}
+                                <span class="badge bg-danger">Annulé</span>
+                            {% else %}
+                                <span class="badge bg-warning">En attente</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if rdv.statut != 'validé' %}
+                                <a href="{{ path('admin_rendezvous_validate', {id: rdv.id}) }}" class="btn btn-success btn-sm">Valider</a>
+                            {% endif %}
+                            {% if rdv.statut != 'annulé' %}
+                                <a href="{{ path('admin_rendezvous_cancel', {id: rdv.id}) }}" class="btn btn-danger btn-sm">Annuler</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">Aucun rendez-vous trouvé.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

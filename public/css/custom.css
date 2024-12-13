@@ -1,0 +1,200 @@
+/* Style principal des boutons */
+.navbar .btn-custom {
+    background-color: #c00113; /* Rouge principal */
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px; /* Taille de la police */
+    padding: 8px 16px; /* Espacement interne */
+    border-radius: 20px; /* Coins arrondis */
+    margin-left: 10px; /* Espacement entre les boutons */
+    transition: all 0.3s ease-in-out; /* Transition fluide */
+    text-transform: uppercase; /* Texte en majuscules */
+}
+.btn-ajout {
+    background-color: #c00113; /* Rouge principal */
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px; /* Taille de la police */
+    padding: 8px 16px; /* Espacement interne */
+    border-radius: 20px; /* Coins arrondis */
+    margin-left: 10px; /* Espacement entre les boutons */
+    text-transform: uppercase; /* Texte en majuscules */
+
+}
+/* Style au survol (hover) */
+.navbar .btn-custom:hover {
+    background-color: black; /* Couleur noire au survol */
+    color: white; /* Texte reste blanc */
+    border: none; /* Pas de bordure */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+    transform: translateY(-2px); /* Légère élévation */
+}
+/* Styles spécifiques au tableau de bord */
+.admin-dashboard .card {
+    background-color: #343a40 !important; /* Fond sombre */
+    color: white !important; /* Texte blanc */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.admin-dashboard .card .btn {
+    background-color: #c00113 !important; /* Rouge principal */
+    border: none;
+}
+
+.admin-dashboard .card .btn:hover {
+    background-color: #9e000f !important;
+}
+
+.admin-dashboard #sidebar {
+    background-color: #212529; /* Sidebar sombre */
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 240px; /* Largeur de la sidebar */
+    padding-top: 20px;
+}
+
+.admin-dashboard #sidebar .nav-link {
+    color: #adb5bd;
+    padding: 10px 15px;
+}
+
+.admin-dashboard #sidebar .nav-link:hover,
+.admin-dashboard #sidebar .nav-link.active {
+    background-color: #c00113;
+    color: white;
+    border-radius: 5px;
+}
+
+.admin-dashboard main {
+    background-color: #f8f9fa; /* Fond gris clair */
+    min-height: 100vh; /* S'assure que le contenu occupe toute la hauteur */
+    margin-left: 240px; /* Compense la largeur de la sidebar */
+    padding: 20px; /* Espacement interne */
+}
+
+.admin-dashboard {
+    background-color: #f8f9fa; /* Fond gris clair global */
+}
+
+
+/* Appliquer uniquement le style hover pour les liens des sidebars */
+#sidebar .nav-link:hover,
+#sidebar .nav-link.active {
+    background-color: #c00113; /* Couleur de survol (hover) */
+    color: white; /* Texte blanc */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+a {
+    color: #c00113;
+    text-decoration: none !important;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+}
+.vehicle-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.vehicle-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+.vehicle-form .form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.vehicle-form .form-control:focus {
+    border-color: #d90000;
+    box-shadow: 0 0 5px rgba(217, 0, 0, 0.3);
+}
+
+.vehicle-form .btn-custom {
+    background-color: #d90000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.vehicle-form .btn-custom:hover {
+    background-color: #b00000;
+}
+
+.vehicle-form .btn-outline-secondary {
+    color: #333;
+    border-color: #ddd;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.vehicle-form .btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #b00000;
+    border-color: #b00000;
+}
+.alert-danger {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.alert-danger a {
+    color: #842029;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.alert-danger a:hover {
+    color: #d90000;
+}
+/* Style par défaut pour l'icône "Mon Espace" */
+.navbar .fa-user-circle {
+    font-size: 1.5rem; /* Taille de l'icône */
+    color: #d90000; /* Rouge de votre thème */
+    margin-right: 5px;
+    transition: color 0.3s ease-in-out; /* Transition fluide */
+}
+
+/* Effet au survol de l'icône */
+.navbar .fa-user-circle:hover {
+    color: #b00000; /* Rouge foncé au survol */
+}
+
+/* Cacher le texte "Mon Espace" par défaut */
+.espace-client-text {
+    display: none; /* Caché par défaut */
+    font-size: 16px;
+    color: #fff; /* Blanc pour contraster avec le fond */
+    transition: opacity 0.3s ease-in-out; /* Apparition fluide */
+}
+
+/* Afficher le texte "Mon Espace" au survol */
+#espace-client-link:hover .espace-client-text {
+    display: inline; /* Affiche le texte */
+    opacity: 1; /* Texte visible */
+}
