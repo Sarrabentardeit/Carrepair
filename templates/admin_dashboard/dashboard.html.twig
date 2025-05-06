@@ -10,7 +10,7 @@
                 <h5 class="text-center text-uppercase fw-bold mb-4">Admin Panel</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-3">
-                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'dashboard' ? 'active' : '' }}" href="#">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}" href="{{ path('app_admin_dashboard') }}">
                             <i class="bi bi-house-door"></i> Tableau de bord
                         </a>
                     </li>
@@ -32,6 +32,17 @@
                     <li class="nav-item mb-3">
                         <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}" href="{{ path('app_product_index') }}">
                             <i class="bi bi-box"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}" href="{{ path('admin_vehicules') }}">
+                            <i class="bi bi-box"></i> Gérer les Vehicules
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}" href="{{ path('admin_orders') }}">
+                            <i class="bi bi-box"></i>Gérez toutes les commandes
                         </a>
                     </li>
                 </ul>

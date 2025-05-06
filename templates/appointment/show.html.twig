@@ -1,34 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Appointment{% endblock %}
+{% block title %}Détails du Rendez-vous{% endblock %}
 
 {% block body %}
-    <h1>Appointment</h1>
+    <div class="appointment-details-page container mt-5">
+        <h1 class="text-center mb-4">Détails du Rendez-vous</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ appointment.id }}</td>
-            </tr>
-            <tr>
-                <th>DateRendezVous</th>
-                <td>{{ appointment.dateRendezVous ? appointment.dateRendezVous|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>ServiceDemande</th>
-                <td>{{ appointment.serviceDemande }}</td>
-            </tr>
-            <tr>
-                <th>Statut</th>
-                <td>{{ appointment.statut }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+            <table class="table table-borderless">
+                <tbody>
+                <tr>
+                    <th scope="row" class="text-primary">Id</th>
+                    <td>{{ appointment.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-primary">Date du Rendez-vous</th>
+                    <td>{{ appointment.date ? appointment.date|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-primary">Service Demandé</th>
+                    <td>{{ appointment.service }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-primary">Statut</th>
+                    <td><span class="badge badge-warning">{{ appointment.statut }}</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <a href="{{ path('app_appointment_index') }}">back to list</a>
-
-    <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}">edit</a>
-
-    {{ include('appointment/_delete_form.html.twig') }}
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('app_appointment_index') }}" class="btn btn-outline-dark">
+                <i class="fa fa-arrow-left"></i> Retour à la liste
+            </a>
+            <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}" class="btn btn-primary">
+                <i class="fa fa-pencil"></i> Modifier
+            </a>
+            {{ include('appointment/_delete_form.html.twig', { 'class': 'btn btn-danger' }) }}
+        </div>
+    </div>
 {% endblock %}

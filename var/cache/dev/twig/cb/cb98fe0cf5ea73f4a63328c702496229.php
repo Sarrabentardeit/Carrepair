@@ -227,6 +227,6 @@ class __TwigTemplate_43e79c90790b16ad022e2efa6711dec6 extends Template
 
     {{ include('vehicle/_delete_form.html.twig') }}
 {% endblock %}
-", "vehicle/show.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\vehicle\\show.html.twig");
+", "vehicle/show.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\vehicle\\show.html.twig");
     }
 }

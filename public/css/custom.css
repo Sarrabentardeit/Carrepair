@@ -55,8 +55,23 @@
     top: 0;
     bottom: 0;
     left: 0;
+    min-height: 100% ;
     width: 240px; /* Largeur de la sidebar */
+    height: auto; /* Assure que la hauteur est égale à 100% de la fenêtre */
+    overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
     padding-top: 20px;
+}
+#sidebar {
+    background-color: #212529; /* Couleur sombre de la sidebar */
+    color: white; /* Couleur du texte */
+    position: fixed; /* Fixe la barre latérale */
+    top: 0; /* S'étend depuis le haut */
+    left: 0; /* S'étend depuis la gauche */
+    width: 240px; /* Largeur de la sidebar */
+    min-height: 100%; /* S'assure que la sidebar s'allonge en fonction du contenu */
+    height: auto; /* Permet de s'ajuster à la hauteur du contenu */
+    overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+    padding-top: 20px; /* Espacement supérieur */
 }
 
 .admin-dashboard #sidebar .nav-link {
@@ -197,4 +212,251 @@ a {
 #espace-client-link:hover .espace-client-text {
     display: inline; /* Affiche le texte */
     opacity: 1; /* Texte visible */
+}
+/* Table Styling */
+.custom-table {
+    background-color: #222; /* Fond général du tableau */
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 80%; /* Ajuste la largeur pour plus d'équilibre */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-table th {
+    background-color: #333; /* En-tête plus contrastée */
+    color: #f00; /* Rouge pour les titres */
+    text-transform: uppercase;
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #444;
+}
+
+.custom-table td {
+    color: #ddd;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #444;
+    text-align: center;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #2a2a2a; /* Alternance des lignes */
+}
+
+.custom-table tr:hover {
+    background-color: #444; /* Effet de survol */
+}
+
+.custom-table .btn-outline-info {
+    color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+
+.custom-table .btn-outline-info:hover {
+    background-color: #0dcaf0;
+    color: #fff;
+}
+
+.custom-table .btn-outline-primary {
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+.custom-table .btn-outline-primary:hover {
+    background-color: #ffc107;
+    color: #111;
+}
+
+.custom-table .badge-warning {
+    background-color: #ffc107;
+    color: #111;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .custom-table {
+        width: 100%;
+        font-size: 12px;
+    }
+}
+/* Styling for the details page */
+.appointment-details-page {
+    max-width: 800px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Table styling */
+.table-borderless th {
+    color: #007bff; /* Bleu doux pour les titres */
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table-borderless td {
+    font-size: 14px;
+    color: #333;
+    padding: 10px 0;
+}
+
+/* Badge styling */
+.badge-warning {
+    background-color: orange;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Button styling */
+.btn {
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-outline-dark {
+    color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-outline-dark:hover {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    color: white;
+}
+/* Style spécifique pour la carte d'enregistrement d'administrateur */
+#card-admin-registration {
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 10px; /* Coins arrondis */
+    background-color: #343a40; /* Couleur sombre */
+    color: white; /* Texte blanc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+    padding: 20px; /* Espacement interne */
+    margin: 20px auto; /* Espacement vertical centré */
+    max-width: 600px; /* Largeur maximale */
+    text-align: center; /* Centrer le contenu */
+}
+
+/* Style du bouton spécifique à cette carte */
+#card-admin-registration .btn {
+    background-color: #c00113; /* Rouge principal */
+    color: white; /* Texte blanc */
+    border: none;
+    border-radius: 20px; /* Coins arrondis */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Texte en majuscules */
+    transition: all 0.3s ease-in-out; /* Animation fluide */
+}
+
+#card-admin-registration .btn:hover {
+    background-color: #9e000f; /* Rouge foncé */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile au survol */
+    transform: translateY(-2px); /* Légère élévation */
+}
+.card-header.bg-red {
+    background-color: #c00113; /* Rouge personnalisé */
+    color: white; /* Texte blanc */
+    font-weight: bold; /* Texte en gras */
+}
+/* Cibler uniquement la page des produits */
+#shop-page .card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+#shop-page .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+#shop-page .card-img-top {
+    height: 150px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+#shop-page .card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+#shop-page .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+#shop-page .subcategories {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+#shop-page .subcategories li {
+    margin-bottom: 5px;
+    list-style-type: disc;
+    margin-left: 15px;
+}
+
+#shop-page .subcategories li a {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+#shop-page .subcategories li a:hover {
+    text-decoration: underline;
+}
+
+#shop-page .container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: #555;
+    text-align: center;
 }

@@ -1,0 +1,328 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+    <section class="boutique">
+
+        <div class="container-fluid py-5">
+            <h1 class="text-center fw-bold my-5" style="color: #333;">{{ subCategory.name }}</h1>
+
+            <!-- Conteneur principal aligné -->
+            <div class="row">
+                <!-- Colonne gauche : Barre de recherche -->
+                <div class="col-lg-3 col-md-4">
+                    <div class="search-bar p-3 bg-light rounded shadow-sm">
+                        <h5 class="text-dark fw-bold mb-3">Rechercher</h5>
+                        <form method="get" action="{{ path('subcategory_search', { id: subCategory.id }) }}">
+                            <div class="mb-3">
+                                <select id="marque" name="marque" class="form-select shadow-sm">
+                                    <option value="">-- Toutes les marques --</option>
+                                    {% for marque in marques %}
+                                        <option value="{{ marque.id }}" {% if criteria.marque == marque.id %}selected{% endif %}>
+                                            {{ marque.nom }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <select id="modele" name="modele" class="form-select shadow-sm">
+                                    <option value="">-- Tous les modèles --</option>
+                                    {% for modele in modeles %}
+                                        <option value="{{ modele.id }}" {% if criteria.modele == modele.id %}selected{% endif %}>
+                                            {{ modele.nom }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <select id="motorisation" name="motorisation" class="form-select shadow-sm">
+                                    <option value="">-- Toutes les motorisations --</option>
+                                    {% for motorisation in motorisations %}
+                                        <option value="{{ motorisation.id }}" {% if criteria.motorisation == motorisation.id %}selected{% endif %}>
+                                            {{ motorisation.nom }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100">Rechercher</button>
+                        </form>
+                    </div>
+                    <!-- Section Catégories -->
+                    <div class="categories p-3 bg-light rounded shadow-sm">
+                        <h5 class="text-dark fw-bold mb-3">Catégories</h5>
+                        <ul class="list-unstyled">
+                            {% for category in categories %}
+                                <li class="mb-2">
+                                    <a href="{{ path('shop_subcategory_products', { id: category.id }) }}" class="text-dark text-decoration-none">
+                                        {{ category.name }} <span class="badge bg-danger float-end"></span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Colonne droite : Liste des produits -->
+                <div class="col-lg-9 col-md-8">
+                    <div class="row gy-4">
+                        {% for product in products %}
+                            <div class="col-md-4 d-flex align-items-stretch">
+                                <div class="product-card w-100">
+                                    <!-- Image produit -->
+                                    <div class="product-image">
+                                        <img src="{{ asset('uploads/images/' ~ product.image) }}" alt="{{ product.nom }}">
+                                    </div>
+
+                                    <!-- Informations produit -->
+                                    <div class="product-info">
+                                        <h5 class="product-title">{{ product.nom }}</h5>
+                                        <p class="product-price text-danger">{{ product.prix }} TND</p>
+                                        <p class="product-stock {% if product.quantiteEnStock > 0 %}in-stock{% else %}out-of-stock{% endif %}">
+                                            {{ product.quantiteEnStock > 0 ? 'En stock' : 'Rupture de stock' }}
+                                        </p>
+
+                                        {% if product.quantiteEnStock > 0 %}
+                                            <form method="post" action="{{ path('cart_add', {'id': product.id}) }}" class="add-to-cart-form">
+                                                <div class="d-flex align-items-center">
+                                                    <input type="number" name="quantity" class="form-control quantity-input me-2" value="1" min="1" max="{{ product.quantiteEnStock }}" required>
+                                                    <button type="submit" class="btn btn-outline-danger flex-grow-1">Ajouter au panier</button>
+                                                </div>
+                                            </form>
+
+                                        {% else %}
+                                            <button class="btn btn-secondary w-100" disabled>Hors stock</button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <p class="text-center text-muted">Aucun produit disponible pour cette sous-catégorie.</p>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ knp_pagination_render(products) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="cartModalLabel">Produit ajouté au panier</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>                  </div>
+                    <div class="modal-body text-center">
+                        <p><strong id="modal-product-name"></strong> a été ajouté à votre panier.</p>
+                        <p>Prix unitaire : <span id="modal-product-price"></span> TND</p>
+                        <p>Quantité : <span id="modal-product-quantity"></span></p>
+                        <hr>
+                        <p><strong>Total panier :</strong> <span id="modal-total-cart"></span> TND</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <a href="{{ path('shop_home') }}" class="btn btn-secondary">Continuer mes achats</a>
+                        <a href="{{ path('cart_index') }}" class="btn btn-danger">Voir le panier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Barre de recherche */
+        .search-bar {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Carte produit */
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #dc3545;
+        }
+
+        .product-stock {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-stock.in-stock {
+            color: #28a745;
+        }
+
+        .product-stock.out-of-stock {
+            color: #dc3545;
+        }
+
+        /* Pagination */
+        .pagination a, .pagination span {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 5px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .pagination a:hover {
+            background-color: #dc3545;
+            color: #fff;
+            border-color: #dc3545;
+        }
+
+        .pagination .active span {
+            background-color: #dc3545;
+            color: #fff;
+            border-color: #dc3545;
+        }
+        .search-bar, .categories {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .categories ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .categories ul li a {
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .categories ul li a:hover {
+            color: #dc3545;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group input[type="number"] {
+            max-width: 60px;
+            margin-right: 10px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .quantity-input {
+            max-width: 60px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .add-to-cart-form .btn {
+            white-space: nowrap; /* Empêche la coupure du texte dans le bouton */
+            border-radius: 5px;
+        }
+
+        .d-flex.align-items-center {
+            gap: 10px; /* Ajoute un espace entre le champ et le bouton */
+        }
+.boutique .container-fluid.py-5 {
+    max-width: 1500px;
+
+}
+    </style>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addToCartForms = document.querySelectorAll('.add-to-cart-form');
+
+            addToCartForms.forEach(form => {
+                form.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+
+                    const formData = new FormData(form);
+                    const url = form.action;
+
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+
+                            if (data.success) {
+                                document.getElementById('modal-product-name').innerText = data.productName;
+                                document.getElementById('modal-product-price').innerText = data.productPrice;
+                                document.getElementById('modal-product-quantity').innerText = data.productQuantity;
+                                document.getElementById('modal-total-cart').innerText = data.totalCart;
+
+                                const modal = new bootstrap.Modal(document.getElementById('cartModal'));
+                                modal.show();
+                            } else {
+                                alert(data.message);
+                            }
+                        } else {
+                            alert('Une erreur est survenue.');
+                        }
+                    } catch (error) {
+                        console.error('Erreur:', error);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

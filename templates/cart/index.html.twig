@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre Panier{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Votre Panier</h1>
+
+        {% if cartItems is empty %}
+            <div class="alert alert-info text-center" role="alert">
+                Votre panier est vide.
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Prix Unitaire</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in cartItems %}
+                        <tr>
+                            <td>
+                                {{ item.product.nom }}
+                            </td>
+
+                            <td>
+                                <span class="badge bg-primary p-2">{{ item.quantity }}</span>
+                            </td>
+                            <td>{{ item.product.prix }} TND</td>
+                            <td><strong>{{ item.total }} TND</strong></td>
+                            <td>
+                                <a href="{{ path('cart_remove', {id: item.product.id}) }}" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash3"></i> Retirer
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <h3>Total : <strong>{{ total }} TND</strong></h3>
+                <div>
+                    <a href="{{ path('cart_clear') }}" class="btn btn-warning btn-lg me-2">
+                        <i class="bi bi-cart-x"></i> Vider le panier
+                    </a>
+                    <a href="{{ path('app_order_new') }}" class="btn btn-success btn-lg">
+                        <i class="bi bi-credit-card"></i> Commander
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="cartModalLabel">
+                        <i class="bi bi-check-circle-fill"></i> Produit ajouté au panier
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p><strong>{{ productName|default('') }}</strong> a été ajouté à votre panier.</p>
+                    <p>Prix unitaire : <strong>{{ productPrice|default('0') }} TND</strong></p>
+                    <p>Quantité : <strong>{{ productQuantity|default('1') }}</strong></p>
+                    <hr>
+                    <p><strong>Total panier :</strong> {{ totalCart|default(total) }} TND</p>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <a href="{{ path('shop_home') }}" class="btn btn-secondary">
+                        <i class="bi bi-shop"></i> Continuer mes achats
+                    </a>
+                    <a href="{{ path('cart_index') }}" class="btn btn-primary">
+                        <i class="bi bi-cart"></i> Voir le panier
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('added_to_cart')) {
+                let cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+                cartModal.show();
+            }
+        });
+    </script>
+{% endblock %}

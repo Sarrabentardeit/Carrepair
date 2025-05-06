@@ -248,6 +248,6 @@ class __TwigTemplate_9a26f3f7eccfc7c69f518292487dcafe extends Template
 
     <a href=\"{{ path('app_vehicle_new') }}\">Create new</a>
 {% endblock %}
-", "vehicle/index.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\vehicle\\index.html.twig");
+", "vehicle/index.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\vehicle\\index.html.twig");
     }
 }

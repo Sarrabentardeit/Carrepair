@@ -785,6 +785,6 @@ class __TwigTemplate_e053a3e56ab0ad544d464c0c6fce3425 extends Template
         <i class=\"fa fa-caret-up\"></i><i class=\"fa fa-caret-up\"></i>
     </div>
     <!-- Back to Top End -->
-{% endblock %}", "testimonial/testimonials.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\testimonial\\testimonials.html.twig");
+{% endblock %}", "testimonial/testimonials.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\testimonial\\testimonials.html.twig");
     }
 }

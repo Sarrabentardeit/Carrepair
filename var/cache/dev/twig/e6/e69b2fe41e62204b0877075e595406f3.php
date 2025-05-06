@@ -73,7 +73,7 @@ class __TwigTemplate_292ba2c71f9811716ecd6f350cb84e4a extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Edit Appointment";
+        yield "Modifier Rendez-vous";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -97,22 +97,29 @@ class __TwigTemplate_292ba2c71f9811716ecd6f350cb84e4a extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <h1>Edit Appointment</h1>
+        yield "    <div class=\"container mt-5\">
+        <h1 class=\"text-center mb-4\">Modifier Rendez-vous</h1>
 
-    ";
-        // line 8
-        yield Twig\Extension\CoreExtension::include($this->env, $context, "appointment/_form.html.twig", ["button_label" => "Update"]);
-        yield "
-
-    <a href=\"";
+        <div class=\"card shadow p-4 bg-white rounded\">
+            ";
         // line 10
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_appointment_index");
-        yield "\">back to list</a>
-
-    ";
-        // line 12
-        yield Twig\Extension\CoreExtension::include($this->env, $context, "appointment/_delete_form.html.twig");
+        yield Twig\Extension\CoreExtension::include($this->env, $context, "appointment/_form.html.twig", ["button_label" => "Mettre à jour"]);
         yield "
+        </div>
+
+        <div class=\"d-flex justify-content-between mt-4\">
+            <a href=\"";
+        // line 14
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_appointment_index");
+        yield "\" class=\"btn btn-outline-secondary\">
+                <i class=\"fa fa-arrow-left\"></i> Retour à la liste
+            </a>
+            ";
+        // line 17
+        yield Twig\Extension\CoreExtension::include($this->env, $context, "appointment/_delete_form.html.twig", ["appointment" => (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 17, $this->source); })())]);
+        yield "
+        </div>
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -144,24 +151,31 @@ class __TwigTemplate_292ba2c71f9811716ecd6f350cb84e4a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  114 => 12,  109 => 10,  104 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  119 => 17,  113 => 14,  106 => 10,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Edit Appointment{% endblock %}
+{% block title %}Modifier Rendez-vous{% endblock %}
 
 {% block body %}
-    <h1>Edit Appointment</h1>
+    <div class=\"container mt-5\">
+        <h1 class=\"text-center mb-4\">Modifier Rendez-vous</h1>
 
-    {{ include('appointment/_form.html.twig', {'button_label': 'Update'}) }}
+        <div class=\"card shadow p-4 bg-white rounded\">
+            {{ include('appointment/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        </div>
 
-    <a href=\"{{ path('app_appointment_index') }}\">back to list</a>
-
-    {{ include('appointment/_delete_form.html.twig') }}
+        <div class=\"d-flex justify-content-between mt-4\">
+            <a href=\"{{ path('app_appointment_index') }}\" class=\"btn btn-outline-secondary\">
+                <i class=\"fa fa-arrow-left\"></i> Retour à la liste
+            </a>
+            {{ include('appointment/_delete_form.html.twig', {'appointment': appointment}) }}
+        </div>
+    </div>
 {% endblock %}
-", "appointment/edit.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\appointment\\edit.html.twig");
+", "appointment/edit.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\appointment\\edit.html.twig");
     }
 }

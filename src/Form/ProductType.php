@@ -2,7 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Marque;
+use App\Entity\Modele;
+use App\Entity\Motorisation;
 use App\Entity\Product;
+use App\Entity\SubCategory;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,6 +18,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\FileType; // Add this use statement at the top
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 
 class ProductType extends AbstractType
@@ -51,7 +57,12 @@ class ProductType extends AbstractType
                 'widget' => 'single_text',
                 'required' => false,
             ])
-
+            ->add('subCategory', EntityType::class, [
+                'class' => SubCategory::class,
+                'choice_label' => 'name', // Le champ à afficher dans le menu déroulant
+                'label' => 'Sous-catégorie',
+                'attr' => ['class' => 'form-control']
+            ])
             // Champs SEO
             ->add('seoTitre', TextType::class, [
                 'label' => 'Titre SEO',
@@ -89,10 +100,7 @@ class ProductType extends AbstractType
             ])
 
             // Champs Image
-            ->add('nomImage', TextType::class, [
-                'label' => 'Nom de l\'image',
-                'required' => false,
-            ])
+
             ->add('texteAlternatif', TextType::class, [
                 'label' => 'Texte alternatif de l\'image',
                 'required' => false,
@@ -101,11 +109,14 @@ class ProductType extends AbstractType
                 'label' => 'Titre de l\'image',
                 'required' => false,
             ])
+
             ->add('descriptionImage', TextareaType::class, [
                 'label' => 'Description de l\'image',
                 'required' => false,
             ])
-        ->add('image', FileType::class, [
+
+
+            ->add('image', FileType::class, [
         'label' => 'Image du produit',
         'mapped' => false, // Ne pas mapper directement à l'entité
         'required' => false,
@@ -115,7 +126,33 @@ class ProductType extends AbstractType
                 'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG)',
             ])
         ],
-    ]);
+    ])
+
+            ->add('marque', EntityType::class, [
+                'class' => Marque::class,
+                'choice_label' => 'nom',
+                'placeholder' => 'Sélectionnez une marque',
+                'mapped' => false, // Non mappé à l'entité `Product`
+                'attr' => ['class' => 'form-control select-marque'],
+            ])
+            ->add('modele', EntityType::class, [
+                'class' => Modele::class,
+                'choice_label' => 'nom',
+                'placeholder' => 'Sélectionnez un modèle',
+                'mapped' => false, // Non mappé à l'entité `Product`
+                'attr' => ['class' => 'form-control select-modele'],
+            ])
+            ->add('motorisations', EntityType::class, [
+                'class' => Motorisation::class,
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'expanded' => false,
+                'placeholder' => 'Sélectionnez des motorisations',
+                'attr' => ['class' => 'form-control select-motorisations'],
+            ])
+
+        ;
+
 
     }
 

@@ -6,6 +6,7 @@ use App\Entity\Order;
 use App\Entity\StockMovement;
 use App\Form\OrderType;
 use App\Repository\OrderRepository;
+use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,53 +24,90 @@ class OrderController extends AbstractController
         ]);
     }
 
+
     #[Route('/new', name: 'app_order_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        CartService $cartService
+    ): Response {
         $order = new Order();
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
+        // Récupérer les articles du panier et le sous-total
+        $cartItems = $cartService->getCartItems();
+        $sousTotal = $cartService->getTotal();
+
+        // Initialisation des frais de livraison par défaut
+        $fraisLivraison = 8.0;
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $order->setClient($this->getUser());
-            $order->calculerMontantTotal(); // Recalcule le total avant d'enregistrer
+            // Récupérer le mode de livraison depuis la requête
+            $modeLivraison = $request->request->get('modeLivraison');
 
-            // **Gestion du stock**
-            foreach ($order->getProduits() as $produit) {
-                $quantiteCommandee = 1; // Exemple: ajustez selon le champ dans le formulaire
-
-                if ($produit->getQuantiteEnStock() >= $quantiteCommandee) {
-                    // Déduire le stock
-                    $nouvelleQuantite = $produit->getQuantiteEnStock() - $quantiteCommandee;
-                    $produit->setQuantiteEnStock($nouvelleQuantite);
-
-                    // Historique de mouvement de stock
-                    $stockMovement = new StockMovement();
-                    $stockMovement->setProduit($produit)
-                        ->setQuantite($quantiteCommandee)
-                        ->setTypeMouvement('Déduction après commande')
-                        ->setDateMouvement(new \DateTime());
-
-                    $entityManager->persist($stockMovement);
-                } else {
-                    $this->addFlash('danger', "Stock insuffisant pour le produit : " . $produit->getNom());
-                    return $this->redirectToRoute('app_order_new');
-                }
+            // Ajuster les frais de livraison pour le mode "Retrait au magasin"
+            if ($modeLivraison === 'retrait') {
+                $fraisLivraison = 0;
+                $order->setTypeLivraison('Retrait au magasin');
+            } else {
+                $order->setTypeLivraison('Livraison Aramex');
             }
 
+            // Construire la structure des produits commandés
+            $produitsCommande = [];
+            foreach ($cartItems as $item) {
+                $produitsCommande[] = [
+                    'nom' => $item['product']->getNom(),
+                    'quantite' => $item['quantity'],
+                    'prix' => $item['product']->getPrix(),
+                ];
+
+                // Décrémenter le stock du produit
+                $item['product']->setQuantiteEnStock(
+                    $item['product']->getQuantiteEnStock() - $item['quantity']
+                );
+                $entityManager->persist($item['product']);
+            }
+
+            // Enregistrer les produits commandés dans la commande
+            $order->setProduitsCommande($produitsCommande);
+
+            // Calculer le montant total
+            $montantTotal = $sousTotal + $fraisLivraison;
+            $order->setMontantTotal($montantTotal);
+
+            // Enregistrer les autres informations
+            $order->setClient($this->getUser());
             $entityManager->persist($order);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Commande créée avec succès.');
+            // Vider le panier après la commande
+            $cartService->clear();
 
-            return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
-        }
+            $this->addFlash('success', 'Commande créée avec succès.');
+            return $this->redirectToRoute('app_order_confirmation', ['id' => $order->getId()]);        }
 
         return $this->render('order/new.html.twig', [
-            'order' => $order,
             'form' => $form->createView(),
+            'cartItems' => $cartItems,
+            'sousTotal' => $sousTotal,
+            'fraisLivraison' => $fraisLivraison,
+            'total' => $sousTotal + $fraisLivraison,
         ]);
     }
+
+
+
+
+    #[Route('/confirmation/{id}', name: 'app_order_confirmation', methods: ['GET'])]
+    public function confirmation(Order $order): Response
+    {
+        return $this->render('order/confirmation.html.twig', [
+            'order' => $order,
+        ]);
+    }
+
 
     #[Route('/{id}', name: 'app_order_show', methods: ['GET'])]
     public function show(Order $order): Response
@@ -111,35 +149,36 @@ class OrderController extends AbstractController
     #[Route('/{id}', name: 'app_order_delete', methods: ['POST'])]
     public function delete(Request $request, Order $order, EntityManagerInterface $entityManager): Response
     {
+        // Vérifier que l'utilisateur connecté est bien le propriétaire de la commande
         if ($order->getClient() !== $this->getUser()) {
             throw $this->createAccessDeniedException("Vous ne pouvez pas supprimer cette commande.");
         }
 
-        if ($this->isCsrfTokenValid('delete'.$order->getId(), $request->request->get('_token'))) {
-            // Gestion de l'annulation de la commande
-            $order->setStatut('Annulé');
+        // Vérifier la validité du token CSRF
+        if ($this->isCsrfTokenValid('delete' . $order->getId(), $request->request->get('_token'))) {
 
-            // Mise à jour du stock des produits
+            // Parcourir les produits associés à la commande pour réajuster le stock
             foreach ($order->getProduits() as $produit) {
-                $nouvelleQuantite = $produit->getQuantiteEnStock() + 1;
+                $quantityToRestore = 1; // Ajustez en fonction de la logique (par exemple, quantité commandée)
+                $nouvelleQuantite = $produit->getQuantiteEnStock() + $quantityToRestore;
+
+                // Mettre à jour la quantité en stock
                 $produit->setQuantiteEnStock($nouvelleQuantite);
 
-                // Historique de mouvement de stock
-                $stockMovement = new StockMovement();
-                $stockMovement->setProduit($produit)
-                    ->setDateMouvement(new \DateTime())
-                    ->setQuantite(1)
-                    ->setTypeMouvement("Retour après annulation de commande");
-
-                $entityManager->persist($stockMovement);
+                // Sauvegarder les modifications
+                $entityManager->persist($produit);
             }
 
+            // Supprimer la commande
             $entityManager->remove($order);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Commande annulée et produits retournés en stock.');
+            // Ajouter un message de succès
+            $this->addFlash('success', 'Commande annulée et le stock des produits a été mis à jour.');
         }
 
+        // Rediriger vers la liste des commandes
         return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

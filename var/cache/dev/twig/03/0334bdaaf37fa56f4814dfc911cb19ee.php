@@ -99,6 +99,6 @@ class __TwigTemplate_d8f449b0ed3306d3c2c7b538594ae040 extends Template
     {{ form_widget(form) }}
     <button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-", "stock_movement/_form.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\stock_movement\\_form.html.twig");
+", "stock_movement/_form.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\stock_movement\\_form.html.twig");
     }
 }

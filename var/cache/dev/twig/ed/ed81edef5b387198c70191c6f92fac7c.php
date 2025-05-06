@@ -65,33 +65,34 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
     <!-- Site All Style Sheet Css -->
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css\" rel=\"stylesheet\">
+
     <link href=\"";
-        // line 11
+        // line 12
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/stylesheets/swiper.min.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
     <link href=\"";
-        // line 12
+        // line 13
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/stylesheets/font-awesome.min.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
     <link href=\"";
-        // line 13
+        // line 14
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/stylesheets/owl.carousel.min.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
     <link href=\"";
-        // line 14
+        // line 15
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/stylesheets/owl.theme.default.min.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
     <link href=\"";
-        // line 15
+        // line 16
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/stylesheets/animate.min.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
     <link href=\"";
-        // line 16
+        // line 17
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/stylesheets/magnific-popup.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
     <!-- Site Main Style Sheet Css -->
     <link href=\"";
-        // line 18
+        // line 19
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/stylesheets/style.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
     <!-- Google Fonts -->
@@ -100,22 +101,23 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
     <link href=\"https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap\" rel=\"stylesheet\">
     <link href=\"https://fonts.googleapis.com/css2?family=Rajdhani&display=swap\" rel=\"stylesheet\">
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
+
     ";
-        // line 25
+        // line 27
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 25, $this->source); })()), "flashes", [], "any", false, false, false, 25));
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "flashes", [], "any", false, false, false, 27));
         foreach ($context['_seq'] as $context["type"] => $context["messages"]) {
-            // line 26
+            // line 28
             yield "        ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable($context["messages"]);
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 27
+                // line 29
                 yield "            <div class=\"alert alert-";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["type"], "html", null, true);
                 yield " my-3 text-center\" role=\"alert\" style=\"font-weight: bold; font-size: 16px;\">
                 ";
-                // line 28
+                // line 30
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
                 yield "
             </div>
@@ -124,31 +126,31 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 31
+            // line 33
             yield "    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['type'], $context['messages'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
+        // line 34
         yield "
 
     <!-- Custom Stylesheets Block -->
     ";
-        // line 35
+        // line 37
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 38
+        // line 40
         yield "</head>
 <body>
 ";
-        // line 40
+        // line 42
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 41
+        // line 43
         yield "
 ";
-        // line 42
+        // line 44
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 53
+        // line 63
         yield "</body>
 </html>
 ";
@@ -184,7 +186,7 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
         yield from [];
     }
 
-    // line 35
+    // line 37
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -197,7 +199,7 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 36
+        // line 38
         yield "        <link href=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/custom.css"), "html", null, true);
         yield "\" rel=\"stylesheet\">
@@ -211,7 +213,7 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
         yield from [];
     }
 
-    // line 40
+    // line 42
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -233,7 +235,7 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
         yield from [];
     }
 
-    // line 42
+    // line 44
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -246,38 +248,46 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 43
-        yield "    <!-- Site All Jquery Js -->
+        // line 45
+        yield "
+    <!-- Votre script personnalisé -->
+
+    <!-- Bootstrap JS -->
+    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js\"></script>
+
+    <!-- Votre script personnalisé -->
+
+
     <script src=\"";
-        // line 44
+        // line 54
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/jquery-3.5.1.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 45
+        // line 55
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/bootstrap.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 46
+        // line 56
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/plugins.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 47
+        // line 57
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/swiper.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 48
+        // line 58
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/wow.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 49
+        // line 59
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/validator.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 50
+        // line 60
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/contact.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 51
+        // line 61
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/javascript/main.js"), "html", null, true);
         yield "\"></script>
 ";
@@ -311,7 +321,7 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  281 => 51,  277 => 50,  273 => 49,  269 => 48,  265 => 47,  261 => 46,  257 => 45,  253 => 44,  250 => 43,  237 => 42,  215 => 40,  201 => 36,  188 => 35,  165 => 5,  152 => 53,  150 => 42,  147 => 41,  145 => 40,  141 => 38,  139 => 35,  134 => 32,  128 => 31,  119 => 28,  114 => 27,  109 => 26,  105 => 25,  95 => 18,  90 => 16,  86 => 15,  82 => 14,  78 => 13,  74 => 12,  70 => 11,  63 => 7,  58 => 5,  52 => 1,);
+        return array (  291 => 61,  287 => 60,  283 => 59,  279 => 58,  275 => 57,  271 => 56,  267 => 55,  263 => 54,  252 => 45,  239 => 44,  217 => 42,  203 => 38,  190 => 37,  167 => 5,  154 => 63,  152 => 44,  149 => 43,  147 => 42,  143 => 40,  141 => 37,  136 => 34,  130 => 33,  121 => 30,  116 => 29,  111 => 28,  107 => 27,  96 => 19,  91 => 17,  87 => 16,  83 => 15,  79 => 14,  75 => 13,  71 => 12,  63 => 7,  58 => 5,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -326,6 +336,7 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
     <!-- Site All Style Sheet Css -->
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css\" rel=\"stylesheet\">
+
     <link href=\"{{ asset('assets/stylesheets/swiper.min.css') }}\" rel=\"stylesheet\">
     <link href=\"{{ asset('assets/stylesheets/font-awesome.min.css') }}\" rel=\"stylesheet\">
     <link href=\"{{ asset('assets/stylesheets/owl.carousel.min.css') }}\" rel=\"stylesheet\">
@@ -340,6 +351,7 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
     <link href=\"https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap\" rel=\"stylesheet\">
     <link href=\"https://fonts.googleapis.com/css2?family=Rajdhani&display=swap\" rel=\"stylesheet\">
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
+
     {% for type, messages in app.flashes %}
         {% for message in messages %}
             <div class=\"alert alert-{{ type }} my-3 text-center\" role=\"alert\" style=\"font-weight: bold; font-size: 16px;\">
@@ -358,7 +370,15 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
 {% block body %}{% endblock %}
 
 {% block javascripts %}
-    <!-- Site All Jquery Js -->
+
+    <!-- Votre script personnalisé -->
+
+    <!-- Bootstrap JS -->
+    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js\"></script>
+
+    <!-- Votre script personnalisé -->
+
+
     <script src=\"{{ asset('assets/javascript/jquery-3.5.1.min.js') }}\"></script>
     <script src=\"{{ asset('assets/javascript/bootstrap.min.js') }}\"></script>
     <script src=\"{{ asset('assets/javascript/plugins.js') }}\"></script>
@@ -370,6 +390,6 @@ class __TwigTemplate_75265518f4b7334ffe6b6f2856d8613d extends Template
 {% endblock %}
 </body>
 </html>
-", "base.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\base.html.twig");
+", "base.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\base.html.twig");
     }
 }

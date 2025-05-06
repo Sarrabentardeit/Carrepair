@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer Marques, Modèles et Motorisations{% endblock %}
+
+{% block body %}
+    <div class="admin-dashboard">
+        <div class="d-flex">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="bg-dark text-white">
+                <h5 class="text-center text-uppercase fw-bold mb-4">Admin Panel</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}" href="{{ path('app_admin_dashboard') }}">
+                            <i class="bi bi-house-door"></i> Tableau de bord
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}" href="{{ path('app_register_admin') }}">
+                            <i class="bi bi-person-plus"></i> Ajouter un Admin
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}" href="{{ path('app_user_index') }}">
+                            <i class="bi bi-person-lines-fill"></i> Gérer les Utilisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}" href="{{ path('admin_rendezvous') }}">
+                            <i class="bi bi-calendar-check"></i> Gérer les Rendez-vous
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}" href="{{ path('app_product_index') }}">
+                            <i class="bi bi-box"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}" href="{{ path('admin_vehicules') }}">
+                            <i class="bi bi-box"></i> Gérer les Véhicules
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}" href="{{ path('admin_orders') }}">
+                            <i class="bi bi-box"></i> Gérer les Commandes
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="flex-grow-1 p-4">
+                <h1 class="mb-4 text-danger">Gérer Marques, Modèles et Motorisations</h1>
+
+                <!-- Flash Messages -->
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+
+                <!-- Tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#marques">Marques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#modeles">Modèles</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-4">
+                    <!-- Marques Tab -->
+                    <div id="marques" class="tab-pane fade show active">
+                        <h2>Ajouter une Marque</h2>
+                        {{ form_start(marqueForm) }}
+                        <div class="mb-3">
+                            {{ form_label(marqueForm.nom, 'Nom de la Marque') }}
+                            {{ form_widget(marqueForm.nom, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <button class="btn btn-success">Ajouter la Marque</button>
+                        {{ form_end(marqueForm) }}
+
+                        <h2 class="mt-5">Liste des Marques</h2>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for marque in marques %}
+                                <tr>
+                                    <td>{{ marque.id }}</td>
+                                    <td>{{ marque.nom }}</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm">Modifier</button>
+                                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Modèles Tab -->
+                    <div id="modeles" class="tab-pane fade">
+                        <h2>Ajouter un Modèle</h2>
+                        {{ form_start(modeleForm) }}
+                        <div class="mb-3">
+                            {{ form_label(modeleForm.nom, 'Nom du Modèle') }}
+                            {{ form_widget(modeleForm.nom, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_label(modeleForm.marque, 'Marque Associée') }}
+                            {{ form_widget(modeleForm.marque, {'attr': {'class': 'form-select'}}) }}
+                        </div>
+                        <button class="btn btn-primary">Ajouter le Modèle</button>
+                        {{ form_end(modeleForm) }}
+
+                        <h2 class="mt-5">Liste des Modèles</h2>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>Marque</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for modele in modeles %}
+                                <tr>
+                                    <td>{{ modele.id }}</td>
+                                    <td>{{ modele.nom }}</td>
+                                    <td>{{ modele.marque.nom }}</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm">Modifier</button>
+                                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

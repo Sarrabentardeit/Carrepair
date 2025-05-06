@@ -97,182 +97,151 @@ class __TwigTemplate_9cdeadcb480de0388d58556bfc937ca2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <div class=\"d-flex\" style=\"height: 100vh;\">
-        <!-- Sidebar -->
-        <nav id=\"sidebar\" class=\"bg-dark text-white vh-100 p-3\" style=\"width: 240px;\">
-            <h5 class=\"text-center text-uppercase fw-bold mb-4\">Admin Panel</h5>
-            <ul class=\"nav flex-column\">
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white ";
+        yield "        <div class=\"d-flex\">
+            <!-- Sidebar -->
+            <nav id=\"sidebar\" class=\"bg-dark text-white vh-100\">
+                <h5 class=\"text-center text-uppercase fw-bold mb-4 py-3\">Admin Panel</h5>
+                <ul class=\"nav flex-column px-3\">
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white ";
         // line 12
         yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "request", [], "any", false, false, false, 12), "attributes", [], "any", false, false, false, 12), "get", ["_route"], "method", false, false, false, 12) == "app_admin_dashboard")) ? ("active") : (""));
         yield "\" href=\"";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admin_dashboard");
         yield "\">
-                        <i class=\"bi bi-house-door\"></i> Tableau de bord
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white ";
+                            <i class=\"bi bi-house-door\"></i> Tableau de bord
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center ";
         // line 17
         yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "request", [], "any", false, false, false, 17), "attributes", [], "any", false, false, false, 17), "get", ["_route"], "method", false, false, false, 17) == "app_register_admin")) ? ("active") : (""));
         yield "\" href=\"";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register_admin");
         yield "\">
-                        <i class=\"bi bi-person-plus\"></i> Ajouter un Admin
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white ";
+                            <i class=\"bi bi-person-plus me-2\"></i> Ajouter un Admin
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center ";
         // line 22
         yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 22, $this->source); })()), "request", [], "any", false, false, false, 22), "attributes", [], "any", false, false, false, 22), "get", ["_route"], "method", false, false, false, 22) == "app_user_index")) ? ("active") : (""));
         yield "\" href=\"";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
         yield "\">
-                        <i class=\"bi bi-person-lines-fill\"></i> Gérer les Utilisateurs
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white ";
+                            <i class=\"bi bi-person-lines-fill me-2\"></i> Gérer les Utilisateurs
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center ";
         // line 27
         yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "request", [], "any", false, false, false, 27), "attributes", [], "any", false, false, false, 27), "get", ["_route"], "method", false, false, false, 27) == "admin_rendezvous")) ? ("active") : (""));
         yield "\" href=\"";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_rendezvous");
         yield "\">
-                        <i class=\"bi bi-calendar-check\"></i> Gérer les Rendez-vous
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white ";
+                            <i class=\"bi bi-calendar-check me-2\"></i> Gérer les Rendez-vous
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center ";
         // line 32
         yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "request", [], "any", false, false, false, 32), "attributes", [], "any", false, false, false, 32), "get", ["_route"], "method", false, false, false, 32) == "app_product_index")) ? ("active") : (""));
         yield "\" href=\"";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_product_index");
         yield "\">
-                        <i class=\"bi bi-box\"></i> Gérer les Produits
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                            <i class=\"bi bi-box me-2\"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center ";
+        // line 37
+        yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 37, $this->source); })()), "request", [], "any", false, false, false, 37), "attributes", [], "any", false, false, false, 37), "get", ["_route"], "method", false, false, false, 37) == "admin_vehicules")) ? ("active") : (""));
+        yield "\" href=\"";
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_vehicules");
+        yield "\">
+                            <i class=\"bi bi-box me-2\"></i> Gérer les Véhicules
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center ";
+        // line 42
+        yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 42, $this->source); })()), "request", [], "any", false, false, false, 42), "attributes", [], "any", false, false, false, 42), "get", ["_route"], "method", false, false, false, 42) == "admin_orders")) ? ("active") : (""));
+        yield "\" href=\"";
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_orders");
+        yield "\">
+                            <i class=\"bi bi-box me-2\"></i> Gérer les Commandes
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-        <!-- Main Content -->
-        <div class=\"flex-grow-1 d-flex align-items-center justify-content-center\" style=\"background-color: #f8f9fa;\">
-            <div class=\"card shadow-lg w-100 h-100 p-5\" style=\"max-width: 1200px; border-radius: 10px; background-color: white;\">
-                <h2 class=\"text-center text-uppercase text-danger mb-4\">Créer un Compte Administrateur</h2>
-
-                ";
-        // line 44
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 44, $this->source); })()), 'form_start', ["attr" => ["class" => "needs-validation", "novalidate" => "novalidate"]]);
-        yield "
-
-                <div class=\"row\">
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
-                            ";
-        // line 49
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 49, $this->source); })()), "nom", [], "any", false, false, false, 49), 'label', ["label_attr" => ["class" => "form-label fw-bold"], "label" => "Nom"]);
-        yield "
-                            ";
-        // line 50
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 50, $this->source); })()), "nom", [], "any", false, false, false, 50), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez votre nom"]]);
-        yield "
-                            <div class=\"invalid-feedback\">
-                                ";
-        // line 52
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 52, $this->source); })()), "nom", [], "any", false, false, false, 52), 'errors');
-        yield "
-                            </div>
-                        </div>
+            <!-- Main Content -->
+            <div class=\"flex-grow-1 p-4\">
+                <div id=\"card-admin-registration\" class=\"card shadow-lg\">
+                    <div class=\"card-header text-center bg-red\">
+                        <h3>Créer un Compte Administrateur</h3>
                     </div>
 
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
-                            ";
-        // line 59
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 59, $this->source); })()), "prenom", [], "any", false, false, false, 59), 'label', ["label_attr" => ["class" => "form-label fw-bold"], "label" => "Prénom"]);
-        yield "
-                            ";
-        // line 60
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 60, $this->source); })()), "prenom", [], "any", false, false, false, 60), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez votre prénom"]]);
-        yield "
-                            <div class=\"invalid-feedback\">
-                                ";
-        // line 62
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 62, $this->source); })()), "prenom", [], "any", false, false, false, 62), 'errors');
-        yield "
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class=\"form-group mb-4\">
-                    ";
-        // line 69
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 69, $this->source); })()), "email", [], "any", false, false, false, 69), 'label', ["label_attr" => ["class" => "form-label fw-bold"], "label" => "Adresse Email"]);
-        yield "
-                    ";
-        // line 70
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 70, $this->source); })()), "email", [], "any", false, false, false, 70), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez votre email"]]);
-        yield "
-                    <div class=\"invalid-feedback\">
+                    <div class=\"card-body\">
                         ";
-        // line 72
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 72, $this->source); })()), "email", [], "any", false, false, false, 72), 'errors');
+        // line 57
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 57, $this->source); })()), 'form_start');
         yield "
-                    </div>
-                </div>
 
-                <div class=\"row\">
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
+                        <div class=\"mb-3\">
+                            <label for=\"email\" class=\"form-label fw-bold\">Adresse Email</label>
                             ";
-        // line 79
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 79, $this->source); })()), "plainPassword", [], "any", false, false, false, 79), "first", [], "any", false, false, false, 79), 'label', ["label_attr" => ["class" => "form-label fw-bold"], "label" => "Mot de passe"]);
+        // line 61
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 61, $this->source); })()), "email", [], "any", false, false, false, 61), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez l'email"]]);
         yield "
-                            ";
-        // line 80
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 80, $this->source); })()), "plainPassword", [], "any", false, false, false, 80), "first", [], "any", false, false, false, 80), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez votre mot de passe"]]);
-        yield "
-                            <div class=\"invalid-feedback\">
+                        </div>
+
+                        <div class=\"row\">
+                            <div class=\"col-md-6 mb-3\">
+                                <label for=\"nom\" class=\"form-label fw-bold\">Nom</label>
                                 ";
+        // line 67
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 67, $this->source); })()), "nom", [], "any", false, false, false, 67), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez le nom"]]);
+        yield "
+                            </div>
+                            <div class=\"col-md-6 mb-3\">
+                                <label for=\"prenom\" class=\"form-label fw-bold\">Prénom</label>
+                                ";
+        // line 71
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 71, $this->source); })()), "prenom", [], "any", false, false, false, 71), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez le prénom"]]);
+        yield "
+                            </div>
+                        </div>
+
+                        <div class=\"mb-3\">
+                            <label for=\"password\" class=\"form-label fw-bold\">Mot de passe</label>
+                            ";
+        // line 77
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 77, $this->source); })()), "plainPassword", [], "any", false, false, false, 77), "first", [], "any", false, false, false, 77), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Entrez le mot de passe"]]);
+        yield "
+                        </div>
+
+                        <div class=\"mb-3\">
+                            <label for=\"confirm_password\" class=\"form-label fw-bold\">Confirmez le Mot de passe</label>
+                            ";
         // line 82
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 82, $this->source); })()), "plainPassword", [], "any", false, false, false, 82), "first", [], "any", false, false, false, 82), 'errors');
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 82, $this->source); })()), "plainPassword", [], "any", false, false, false, 82), "second", [], "any", false, false, false, 82), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Confirmez le mot de passe"]]);
         yield "
-                            </div>
                         </div>
-                    </div>
 
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
-                            ";
-        // line 89
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 89, $this->source); })()), "plainPassword", [], "any", false, false, false, 89), "second", [], "any", false, false, false, 89), 'label', ["label_attr" => ["class" => "form-label fw-bold"], "label" => "Confirmation du mot de passe"]);
+                        <button class=\"btn btn-primary w-100 py-2 mt-3\">Créer Administrateur</button>
+
+                        ";
+        // line 87
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 87, $this->source); })()), 'form_end');
         yield "
-                            ";
-        // line 90
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 90, $this->source); })()), "plainPassword", [], "any", false, false, false, 90), "second", [], "any", false, false, false, 90), 'widget', ["attr" => ["class" => "form-control", "placeholder" => "Confirmez votre mot de passe"]]);
-        yield "
-                            <div class=\"invalid-feedback\">
-                                ";
-        // line 92
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 92, $this->source); })()), "plainPassword", [], "any", false, false, false, 92), "second", [], "any", false, false, false, 92), 'errors');
-        yield "
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <div class=\"d-grid\">
-                    <button type=\"submit\" class=\"btn btn-danger btn-lg\">Créer Administrateur</button>
-                </div>
 
-                ";
-        // line 102
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 102, $this->source); })()), 'form_end');
-        yield "
+
             </div>
-        </div>
-    </div>
+            </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -304,7 +273,7 @@ class __TwigTemplate_9cdeadcb480de0388d58556bfc937ca2 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  271 => 102,  258 => 92,  253 => 90,  249 => 89,  239 => 82,  234 => 80,  230 => 79,  220 => 72,  215 => 70,  211 => 69,  201 => 62,  196 => 60,  192 => 59,  182 => 52,  177 => 50,  173 => 49,  165 => 44,  148 => 32,  138 => 27,  128 => 22,  118 => 17,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  236 => 87,  228 => 82,  220 => 77,  211 => 71,  204 => 67,  195 => 61,  188 => 57,  168 => 42,  158 => 37,  148 => 32,  138 => 27,  128 => 22,  118 => 17,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -314,107 +283,96 @@ class __TwigTemplate_9cdeadcb480de0388d58556bfc937ca2 extends Template
 {% block title %}Enregistrement d'un Administrateur{% endblock %}
 
 {% block body %}
-    <div class=\"d-flex\" style=\"height: 100vh;\">
-        <!-- Sidebar -->
-        <nav id=\"sidebar\" class=\"bg-dark text-white vh-100 p-3\" style=\"width: 240px;\">
-            <h5 class=\"text-center text-uppercase fw-bold mb-4\">Admin Panel</h5>
-            <ul class=\"nav flex-column\">
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}\" href=\"{{ path('app_admin_dashboard') }}\">
-                        <i class=\"bi bi-house-door\"></i> Tableau de bord
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}\" href=\"{{ path('app_register_admin') }}\">
-                        <i class=\"bi bi-person-plus\"></i> Ajouter un Admin
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}\" href=\"{{ path('app_user_index') }}\">
-                        <i class=\"bi bi-person-lines-fill\"></i> Gérer les Utilisateurs
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}\" href=\"{{ path('admin_rendezvous') }}\">
-                        <i class=\"bi bi-calendar-check\"></i> Gérer les Rendez-vous
-                    </a>
-                </li>
-                <li class=\"nav-item mb-3\">
-                    <a class=\"nav-link text-white {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}\" href=\"{{ path('app_product_index') }}\">
-                        <i class=\"bi bi-box\"></i> Gérer les Produits
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class=\"d-flex\">
+            <!-- Sidebar -->
+            <nav id=\"sidebar\" class=\"bg-dark text-white vh-100\">
+                <h5 class=\"text-center text-uppercase fw-bold mb-4 py-3\">Admin Panel</h5>
+                <ul class=\"nav flex-column px-3\">
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}\" href=\"{{ path('app_admin_dashboard') }}\">
+                            <i class=\"bi bi-house-door\"></i> Tableau de bord
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}\" href=\"{{ path('app_register_admin') }}\">
+                            <i class=\"bi bi-person-plus me-2\"></i> Ajouter un Admin
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}\" href=\"{{ path('app_user_index') }}\">
+                            <i class=\"bi bi-person-lines-fill me-2\"></i> Gérer les Utilisateurs
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}\" href=\"{{ path('admin_rendezvous') }}\">
+                            <i class=\"bi bi-calendar-check me-2\"></i> Gérer les Rendez-vous
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}\" href=\"{{ path('app_product_index') }}\">
+                            <i class=\"bi bi-box me-2\"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}\" href=\"{{ path('admin_vehicules') }}\">
+                            <i class=\"bi bi-box me-2\"></i> Gérer les Véhicules
+                        </a>
+                    </li>
+                    <li class=\"nav-item mb-3\">
+                        <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}\" href=\"{{ path('admin_orders') }}\">
+                            <i class=\"bi bi-box me-2\"></i> Gérer les Commandes
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-        <!-- Main Content -->
-        <div class=\"flex-grow-1 d-flex align-items-center justify-content-center\" style=\"background-color: #f8f9fa;\">
-            <div class=\"card shadow-lg w-100 h-100 p-5\" style=\"max-width: 1200px; border-radius: 10px; background-color: white;\">
-                <h2 class=\"text-center text-uppercase text-danger mb-4\">Créer un Compte Administrateur</h2>
-
-                {{ form_start(registrationForm, { 'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'} }) }}
-
-                <div class=\"row\">
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
-                            {{ form_label(registrationForm.nom, 'Nom', {'label_attr': {'class': 'form-label fw-bold'}}) }}
-                            {{ form_widget(registrationForm.nom, { 'attr': {'class': 'form-control', 'placeholder': 'Entrez votre nom'} }) }}
-                            <div class=\"invalid-feedback\">
-                                {{ form_errors(registrationForm.nom) }}
-                            </div>
-                        </div>
+            <!-- Main Content -->
+            <div class=\"flex-grow-1 p-4\">
+                <div id=\"card-admin-registration\" class=\"card shadow-lg\">
+                    <div class=\"card-header text-center bg-red\">
+                        <h3>Créer un Compte Administrateur</h3>
                     </div>
 
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
-                            {{ form_label(registrationForm.prenom, 'Prénom', {'label_attr': {'class': 'form-label fw-bold'}}) }}
-                            {{ form_widget(registrationForm.prenom, { 'attr': {'class': 'form-control', 'placeholder': 'Entrez votre prénom'} }) }}
-                            <div class=\"invalid-feedback\">
-                                {{ form_errors(registrationForm.prenom) }}
+                    <div class=\"card-body\">
+                        {{ form_start(registrationForm) }}
+
+                        <div class=\"mb-3\">
+                            <label for=\"email\" class=\"form-label fw-bold\">Adresse Email</label>
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez l\\'email'}}) }}
+                        </div>
+
+                        <div class=\"row\">
+                            <div class=\"col-md-6 mb-3\">
+                                <label for=\"nom\" class=\"form-label fw-bold\">Nom</label>
+                                {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le nom'}}) }}
+                            </div>
+                            <div class=\"col-md-6 mb-3\">
+                                <label for=\"prenom\" class=\"form-label fw-bold\">Prénom</label>
+                                {{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le prénom'}}) }}
                             </div>
                         </div>
+
+                        <div class=\"mb-3\">
+                            <label for=\"password\" class=\"form-label fw-bold\">Mot de passe</label>
+                            {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le mot de passe'}}) }}
+                        </div>
+
+                        <div class=\"mb-3\">
+                            <label for=\"confirm_password\" class=\"form-label fw-bold\">Confirmez le Mot de passe</label>
+                            {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmez le mot de passe'}}) }}
+                        </div>
+
+                        <button class=\"btn btn-primary w-100 py-2 mt-3\">Créer Administrateur</button>
+
+                        {{ form_end(registrationForm) }}
                     </div>
                 </div>
 
-                <div class=\"form-group mb-4\">
-                    {{ form_label(registrationForm.email, 'Adresse Email', {'label_attr': {'class': 'form-label fw-bold'}}) }}
-                    {{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control', 'placeholder': 'Entrez votre email'} }) }}
-                    <div class=\"invalid-feedback\">
-                        {{ form_errors(registrationForm.email) }}
-                    </div>
-                </div>
 
-                <div class=\"row\">
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
-                            {{ form_label(registrationForm.plainPassword.first, 'Mot de passe', {'label_attr': {'class': 'form-label fw-bold'}}) }}
-                            {{ form_widget(registrationForm.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Entrez votre mot de passe'} }) }}
-                            <div class=\"invalid-feedback\">
-                                {{ form_errors(registrationForm.plainPassword.first) }}
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class=\"col-md-6 mb-4\">
-                        <div class=\"form-group\">
-                            {{ form_label(registrationForm.plainPassword.second, 'Confirmation du mot de passe', {'label_attr': {'class': 'form-label fw-bold'}}) }}
-                            {{ form_widget(registrationForm.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Confirmez votre mot de passe'} }) }}
-                            <div class=\"invalid-feedback\">
-                                {{ form_errors(registrationForm.plainPassword.second) }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class=\"d-grid\">
-                    <button type=\"submit\" class=\"btn btn-danger btn-lg\">Créer Administrateur</button>
-                </div>
-
-                {{ form_end(registrationForm) }}
             </div>
-        </div>
-    </div>
+            </div>
 {% endblock %}
-", "admin_dashboard/register_admin.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\admin_dashboard\\register_admin.html.twig");
+", "admin_dashboard/register_admin.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\admin_dashboard\\register_admin.html.twig");
     }
 }

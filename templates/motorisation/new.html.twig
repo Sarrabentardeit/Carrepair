@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Motorisation{% endblock %}
+
+{% block body %}
+    <h1>Create new Motorisation</h1>
+
+    {{ include('motorisation/_form.html.twig') }}
+
+    <a href="{{ path('app_motorisation_index') }}">back to list</a>
+{% endblock %}

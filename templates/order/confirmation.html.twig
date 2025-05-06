@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de Commande{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <!-- Entête de confirmation -->
+        <div class="text-center p-5" style="background-color: #ffffff; border: 1px solid #e3e3e3; border-radius: 10px;">
+            <h1 class="font-weight-bold text-danger">✔ Votre commande est confirmée</h1>
+            <p class="text-muted">Un e-mail vous a été envoyé à l'adresse <strong class="text-dark">{{ order.email }}</strong>.</p>
+            <p class="text-secondary">Merci pour votre confiance !</p>
+        </div>
+
+        <div class="row mt-5">
+            <!-- Articles de la commande -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border-radius: 10px;">
+                    <div class="card-header bg-danger text-white font-weight-bold" style="border-radius: 10px 10px 0 0;">
+                        🛒 Articles de la Commande
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for produit in order.produitsCommande %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: #ffffff; border-bottom: 1px solid #e3e3e3;">
+                                <span><strong>{{ produit.nom }}</strong></span>
+                                <span>{{ produit.quantite }} x {{ produit.prix }} TND</span>
+                                <span class="text-danger font-weight-bold">{{ produit.quantite * produit.prix }} TND</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Détails de la commande -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm" style="border-radius: 10px;">
+                    <div class="card-header bg-danger text-white font-weight-bold" style="border-radius: 10px 10px 0 0;">
+                        📋 Détails de la Commande
+                    </div>
+                    <div class="card-body" style="background-color: #ffffff;">
+                        <p><strong>Référence :</strong> {{ order.id }}</p>
+                        <p><strong>Date :</strong> {{ order.dateCommande|date('d/m/Y H:i') }}</p>
+                        <p><strong>Montant Total des Articles :</strong> <span class="text-dark font-weight-bold">{{ order.montantTotal }} TND</span></p>
+                        <p><strong>Frais de Livraison :</strong>
+                            {% if order.typeLivraison == 'Livraison Aramex' %}
+                                8 TND
+                            {% else %}
+                                0 TND
+                            {% endif %}
+                        </p>
+                        <p><strong>Prix Total (Articles + Livraison) :</strong>
+                            <span class="text-danger font-weight-bold">
+            {% if order.typeLivraison == 'Livraison Aramex' %}
+                {{ order.montantTotal + 8 }} TND
+            {% else %}
+                {{ order.montantTotal }} TND
+            {% endif %}
+        </span>
+                        </p>
+                        <p><strong>Mode de Livraison :</strong> {{ order.typeLivraison }}</p>
+                        <p><strong>Mode de Paiement :</strong> Paiement lors de la livraison</p>
+                        <p><strong>Statut :</strong> <span class="text-warning">{{ order.statut }}</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Message de fin -->
+        <div class="text-center mt-5">
+            <p class="text-secondary">Votre commande sera envoyée très prochainement.</p>
+            <a href="/page" class="btn btn-danger btn-lg" style="padding: 10px 20px; border-radius: 5px;">Retour à l'Accueil</a>
+        </div>
+    </div>
+{% endblock %}

@@ -49,6 +49,30 @@ class Product
         return $this;
     }
 
+    #[ORM\ManyToMany(targetEntity: Motorisation::class, inversedBy: 'products')]
+    private Collection $motorisations;
+
+
+    public function getMotorisations(): Collection
+    {
+        return $this->motorisations;
+    }
+
+    public function addMotorisation(Motorisation $motorisation): self
+    {
+        if (!$this->motorisations->contains($motorisation)) {
+            $this->motorisations->add($motorisation);
+        }
+
+        return $this;
+    }
+
+    public function removeMotorisation(Motorisation $motorisation): self
+    {
+        $this->motorisations->removeElement($motorisation);
+
+        return $this;
+    }
 
     public function getStockMovements(): Collection
     {
@@ -99,6 +123,20 @@ class Product
         $this->id = $id;
     }
 
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+        }
+
+        return $this;
+    }
+    public function removeOrder(Order $order): self
+    {
+        $this->orders->removeElement($order);
+
+        return $this;
+    }
     public function getOrders(): Collection
     {
         return $this->orders;
@@ -151,6 +189,21 @@ class Product
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $descriptionImage = null;
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
 
     // SEO Options Techniques
     #[ORM\Column(type: Types::BOOLEAN, options: ["default" => true])]
@@ -164,11 +217,36 @@ class Product
 
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: "produits")]
     private Collection $orders;
+    #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?SubCategory $subCategory;
+    public function getSubCategory(): ?SubCategory
+    {
+        return $this->subCategory;
+    }
 
+    public function setSubCategory(?SubCategory $subCategory): self
+    {
+        $this->subCategory = $subCategory;
+
+        // Associer automatiquement la catégorie basée sur la sous-catégorie
+        if ($subCategory) {
+            $this->category = $subCategory->getCategory();
+        }
+
+        return $this;
+    }
     public function __construct()
     {
         $this->stockMovements = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->motorisations = new ArrayCollection();
+
+
+    }
+    public function isInStock(): bool
+    {
+        return $this->quantiteEnStock > 0;
     }
 
     // --- Getters & Setters pour les nouveaux champs ---

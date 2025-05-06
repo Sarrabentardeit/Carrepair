@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Commandes{% endblock %}
+
+{% block body %}
+    <div class="admin-dashboard">
+        <div class="d-flex">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="bg-dark text-white vh-100">
+                <h5 class="text-center text-uppercase fw-bold mb-4">Admin Panel</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}" href="{{ path('app_admin_dashboard') }}">
+                            <i class="bi bi-house-door"></i> Tableau de bord
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}" href="{{ path('app_register_admin') }}">
+                            <i class="bi bi-person-plus"></i> Ajouter un Admin
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}" href="{{ path('app_user_index') }}">
+                            <i class="bi bi-person-lines-fill"></i> Gérer les Utilisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}" href="{{ path('admin_rendezvous') }}">
+                            <i class="bi bi-calendar-check"></i> Gérer les Rendez-vous
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}" href="{{ path('app_product_index') }}">
+                            <i class="bi bi-box"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}" href="{{ path('admin_vehicules') }}">
+                            <i class="bi bi-box"></i> Gérer les Véhicules
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}" href="{{ path('admin_orders') }}">
+                            <i class="bi bi-box"></i> Gérer les Commandes
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="flex-grow-1 p-4">
+                <h1 class="text-center text-danger mb-4">Gestion des Commandes</h1>
+
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Type de Livraison</th>
+                        <th>Nom du Produit</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                        <th>Montant Total</th>
+                        <th>Date</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in pagination.items %}
+                        {% for produit in order.produitsCommande %}
+                            <tr>
+                                {% if loop.first %}
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.id }}</td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.nom }}</td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.prenom }}</td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.email }}</td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.telephone }}</td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.typeLivraison }}</td>
+                                {% endif %}
+                                <td>{{ produit.nom }}</td>
+                                <td>{{ produit.quantite }}</td>
+                                <td>{{ produit.prix }} TND</td>
+                                {% if loop.first %}
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.montantTotal }} TND</td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">{{ order.dateCommande|date('d/m/Y H:i') }}</td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">
+                        <span class="badge
+                            {% if order.statut == 'Acceptée' %} bg-success
+                            {% elseif order.statut == 'Refusée' %} bg-danger
+                            {% else %} bg-warning text-dark {% endif %}">
+                            {{ order.statut }}
+                        </span>
+                                    </td>
+                                    <td rowspan="{{ order.produitsCommande|length }}">
+                                        <form method="post" action="{{ path('admin_orders') }}" class="d-inline">
+                                            <input type="hidden" name="order_id" value="{{ order.id }}">
+                                            <button type="submit" name="action" value="accept" class="btn btn-success btn-sm">Accepter</button>
+                                            <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm">Refuser</button>
+                                        </form>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="13" class="text-center">Aucune commande trouvée.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+                <div class="d-flex justify-content-center mt-4">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </main>
+
+
+        </div>
+    </div>
+    <style> .pagination a, .pagination span {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #dc3545;
+        }
+
+        .pagination a:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .pagination .active span {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545 ;
+        }</style>
+{% endblock %}

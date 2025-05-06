@@ -97,23 +97,22 @@ class __TwigTemplate_9e7f772d89dd9786499b1af4c3e40194 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <div class=\"container mt-5\">
-        <!-- En-tête stylisé avec un espacement élégant -->
-        <h1 class=\"text-center mb-4\" style=\"font-family: 'Arial', sans-serif; font-weight: bold; color: #343a40;\">
-            Edit Product
-        </h1>
+        yield "    <h1>Edit Product</h1>
 
-        ";
-        // line 12
+    ";
+        // line 8
         yield Twig\Extension\CoreExtension::include($this->env, $context, "product/_form.html.twig", ["button_label" => "Update"]);
         yield "
 
-        <a href=\"";
-        // line 14
+    <a href=\"";
+        // line 10
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_product_index");
-        yield "\" class=\"btn btn-outline-primary mt-3\">Back to List</a>
+        yield "\">back to list</a>
 
-    </div>
+    ";
+        // line 12
+        yield Twig\Extension\CoreExtension::include($this->env, $context, "product/_delete_form.html.twig");
+        yield "
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -145,7 +144,7 @@ class __TwigTemplate_9e7f772d89dd9786499b1af4c3e40194 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  113 => 14,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  114 => 12,  109 => 10,  104 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -155,18 +154,14 @@ class __TwigTemplate_9e7f772d89dd9786499b1af4c3e40194 extends Template
 {% block title %}Edit Product{% endblock %}
 
 {% block body %}
-    <div class=\"container mt-5\">
-        <!-- En-tête stylisé avec un espacement élégant -->
-        <h1 class=\"text-center mb-4\" style=\"font-family: 'Arial', sans-serif; font-weight: bold; color: #343a40;\">
-            Edit Product
-        </h1>
+    <h1>Edit Product</h1>
 
-        {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
 
-        <a href=\"{{ path('app_product_index') }}\" class=\"btn btn-outline-primary mt-3\">Back to List</a>
+    <a href=\"{{ path('app_product_index') }}\">back to list</a>
 
-    </div>
+    {{ include('product/_delete_form.html.twig') }}
 {% endblock %}
-", "product/edit.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\product\\edit.html.twig");
+", "product/edit.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\product\\edit.html.twig");
     }
 }

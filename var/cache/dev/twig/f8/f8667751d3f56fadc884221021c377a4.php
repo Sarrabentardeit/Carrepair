@@ -152,6 +152,26 @@ class __TwigTemplate_a5ef0c95f02c10399c090b9dc572e16f extends Template
                         <i class=\"bi bi-box me-2\"></i> Gérer les Produits
                     </a>
                 </li>
+                <li class=\"nav-item mb-3\">
+                    <a class=\"nav-link text-white d-flex align-items-center ";
+        // line 37
+        yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 37, $this->source); })()), "request", [], "any", false, false, false, 37), "attributes", [], "any", false, false, false, 37), "get", ["_route"], "method", false, false, false, 37) == "admin_vehicules")) ? ("active") : (""));
+        yield "\" href=\"";
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_vehicules");
+        yield "\">
+                        <i class=\"bi bi-box me-2\"></i> Gérer les Véhicules
+                    </a>
+                </li>
+                <li class=\"nav-item mb-3\">
+                    <a class=\"nav-link text-white d-flex align-items-center ";
+        // line 42
+        yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 42, $this->source); })()), "request", [], "any", false, false, false, 42), "attributes", [], "any", false, false, false, 42), "get", ["_route"], "method", false, false, false, 42) == "admin_orders")) ? ("active") : (""));
+        yield "\" href=\"";
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_orders");
+        yield "\">
+                        <i class=\"bi bi-box me-2\"></i> Gérer les Commandes
+                    </a>
+                </li>
             </ul>
         </nav>
 
@@ -172,75 +192,75 @@ class __TwigTemplate_a5ef0c95f02c10399c090b9dc572e16f extends Template
                 </thead>
                 <tbody>
                 ";
-        // line 55
+        // line 65
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["rendezVous"]) || array_key_exists("rendezVous", $context) ? $context["rendezVous"] : (function () { throw new RuntimeError('Variable "rendezVous" does not exist.', 55, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["rendezVous"]) || array_key_exists("rendezVous", $context) ? $context["rendezVous"] : (function () { throw new RuntimeError('Variable "rendezVous" does not exist.', 65, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["rdv"]) {
-            // line 56
+            // line 66
             yield "                    <tr>
                         <td>";
-            // line 57
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "id", [], "any", false, false, false, 57), "html", null, true);
+            // line 67
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "id", [], "any", false, false, false, 67), "html", null, true);
             yield "</td>
                         <td>";
-            // line 58
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "client", [], "any", false, false, false, 58), "email", [], "any", false, false, false, 58), "html", null, true);
+            // line 68
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "client", [], "any", false, false, false, 68), "email", [], "any", false, false, false, 68), "html", null, true);
             yield "</td>
                         <td>";
-            // line 59
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "date", [], "any", false, false, false, 59), "d/m/Y H:i"), "html", null, true);
+            // line 69
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "date", [], "any", false, false, false, 69), "d/m/Y H:i"), "html", null, true);
             yield "</td>
                         <td>";
-            // line 60
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "service", [], "any", false, false, false, 60), "html", null, true);
+            // line 70
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "service", [], "any", false, false, false, 70), "html", null, true);
             yield "</td>
                         <td>
                             ";
-            // line 62
-            if ((CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "statut", [], "any", false, false, false, 62) == "validé")) {
-                // line 63
+            // line 72
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "statut", [], "any", false, false, false, 72) == "validé")) {
+                // line 73
                 yield "                                <span class=\"badge bg-success\">Validé</span>
                             ";
-            } elseif ((CoreExtension::getAttribute($this->env, $this->source,             // line 64
-$context["rdv"], "statut", [], "any", false, false, false, 64) == "annulé")) {
-                // line 65
+            } elseif ((CoreExtension::getAttribute($this->env, $this->source,             // line 74
+$context["rdv"], "statut", [], "any", false, false, false, 74) == "annulé")) {
+                // line 75
                 yield "                                <span class=\"badge bg-danger\">Annulé</span>
                             ";
             } else {
-                // line 67
+                // line 77
                 yield "                                <span class=\"badge bg-warning\">En attente</span>
                             ";
             }
-            // line 69
+            // line 79
             yield "                        </td>
                         <td>
                             ";
-            // line 71
-            if ((CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "statut", [], "any", false, false, false, 71) != "validé")) {
-                // line 72
+            // line 81
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "statut", [], "any", false, false, false, 81) != "validé")) {
+                // line 82
                 yield "                                <a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_rendezvous_validate", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "id", [], "any", false, false, false, 72)]), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_rendezvous_validate", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "id", [], "any", false, false, false, 82)]), "html", null, true);
                 yield "\" class=\"btn btn-success btn-sm\">Valider</a>
                             ";
             }
-            // line 74
+            // line 84
             yield "                            ";
-            if ((CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "statut", [], "any", false, false, false, 74) != "annulé")) {
-                // line 75
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "statut", [], "any", false, false, false, 84) != "annulé")) {
+                // line 85
                 yield "                                <a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_rendezvous_cancel", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "id", [], "any", false, false, false, 75)]), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_rendezvous_cancel", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["rdv"], "id", [], "any", false, false, false, 85)]), "html", null, true);
                 yield "\" class=\"btn btn-danger btn-sm\">Annuler</a>
                             ";
             }
-            // line 77
+            // line 87
             yield "                        </td>
                     </tr>
                 ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 80
+            // line 90
             yield "                    <tr>
                         <td colspan=\"6\" class=\"text-center\">Aucun rendez-vous trouvé.</td>
                     </tr>
@@ -249,7 +269,7 @@ $context["rdv"], "statut", [], "any", false, false, false, 64) == "annulé")) {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['rdv'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 84
+        // line 94
         yield "                </tbody>
             </table>
         </div>
@@ -285,7 +305,7 @@ $context["rdv"], "statut", [], "any", false, false, false, 64) == "annulé")) {
      */
     public function getDebugInfo(): array
     {
-        return array (  253 => 84,  244 => 80,  237 => 77,  231 => 75,  228 => 74,  222 => 72,  220 => 71,  216 => 69,  212 => 67,  208 => 65,  206 => 64,  203 => 63,  201 => 62,  196 => 60,  192 => 59,  188 => 58,  184 => 57,  181 => 56,  176 => 55,  148 => 32,  138 => 27,  128 => 22,  118 => 17,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  273 => 94,  264 => 90,  257 => 87,  251 => 85,  248 => 84,  242 => 82,  240 => 81,  236 => 79,  232 => 77,  228 => 75,  226 => 74,  223 => 73,  221 => 72,  216 => 70,  212 => 69,  208 => 68,  204 => 67,  201 => 66,  196 => 65,  168 => 42,  158 => 37,  148 => 32,  138 => 27,  128 => 22,  118 => 17,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -323,6 +343,16 @@ $context["rdv"], "statut", [], "any", false, false, false, 64) == "annulé")) {
                 <li class=\"nav-item mb-3\">
                     <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}\" href=\"{{ path('app_product_index') }}\">
                         <i class=\"bi bi-box me-2\"></i> Gérer les Produits
+                    </a>
+                </li>
+                <li class=\"nav-item mb-3\">
+                    <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}\" href=\"{{ path('admin_vehicules') }}\">
+                        <i class=\"bi bi-box me-2\"></i> Gérer les Véhicules
+                    </a>
+                </li>
+                <li class=\"nav-item mb-3\">
+                    <a class=\"nav-link text-white d-flex align-items-center {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}\" href=\"{{ path('admin_orders') }}\">
+                        <i class=\"bi bi-box me-2\"></i> Gérer les Commandes
                     </a>
                 </li>
             </ul>
@@ -378,6 +408,6 @@ $context["rdv"], "statut", [], "any", false, false, false, 64) == "annulé")) {
         </div>
     </div>
 {% endblock %}
-", "admin_dashboard/rendezvous/index.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\admin_dashboard\\rendezvous\\index.html.twig");
+", "admin_dashboard/rendezvous/index.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\admin_dashboard\\rendezvous\\index.html.twig");
     }
 }

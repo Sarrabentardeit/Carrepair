@@ -216,6 +216,6 @@ class __TwigTemplate_3fb18d4f300f16d5dc12a1098f1b5f1e extends Template
 
     {{ include('stock_movement/_delete_form.html.twig') }}
 {% endblock %}
-", "stock_movement/show.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\stock_movement\\show.html.twig");
+", "stock_movement/show.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\stock_movement\\show.html.twig");
     }
 }

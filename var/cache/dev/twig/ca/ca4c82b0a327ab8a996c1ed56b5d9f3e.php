@@ -241,6 +241,6 @@ class __TwigTemplate_bddefd7e52733af065edfc0a27778a21 extends Template
 
     <a href=\"{{ path('app_stock_movement_new') }}\">Create new</a>
 {% endblock %}
-", "stock_movement/index.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\stock_movement\\index.html.twig");
+", "stock_movement/index.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\stock_movement\\index.html.twig");
     }
 }

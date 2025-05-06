@@ -143,7 +143,10 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
         // line 39
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_page");
         yield "\">Home</a></li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"services.html\">Services</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"";
+        // line 40
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_services");
+        yield "\">Services</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"products.html\">Products</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"packages.html\">Packages</a></li>
                         <li class=\"nav-item dropdown\">
@@ -154,7 +157,10 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
                                 <li><a href=\"page.html\">Page</a></li>
                             </ul>
                         </li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"testimonials.html\">Review</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"";
+        // line 51
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_testimonial");
+        yield "\">Review</a></li>
                         <li class=\"nav-item book-now\"><a class=\"nav-link js-scroll\" href=\"";
         // line 52
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_appointment_new");
@@ -250,7 +256,7 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
                     <button class=\"btn btn-custom\" type=\"submit\">Enregistrer</button>
                     <a href=\"";
         // line 118
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_vehicle_index");
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_appointment_new");
         yield "\" class=\"btn btn-outline-secondary\">Annuler</a>
                 </div>
 
@@ -415,7 +421,7 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  323 => 176,  300 => 156,  276 => 135,  259 => 121,  253 => 118,  244 => 112,  237 => 108,  227 => 101,  220 => 97,  203 => 83,  182 => 65,  173 => 59,  169 => 58,  160 => 52,  144 => 39,  135 => 33,  131 => 32,  127 => 31,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  329 => 176,  306 => 156,  282 => 135,  265 => 121,  259 => 118,  250 => 112,  243 => 108,  233 => 101,  226 => 97,  209 => 83,  188 => 65,  179 => 59,  175 => 58,  166 => 52,  162 => 51,  148 => 40,  144 => 39,  135 => 33,  131 => 32,  127 => 31,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -459,7 +465,7 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
                 <div class=\"navbar-collapse collapse justify-content-end\" id=\"navbarDefault\">
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll active\" href=\"{{ path('app_page') }}\">Home</a></li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"services.html\">Services</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"{{ path('app_services') }}\">Services</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"products.html\">Products</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"packages.html\">Packages</a></li>
                         <li class=\"nav-item dropdown\">
@@ -470,7 +476,7 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
                                 <li><a href=\"page.html\">Page</a></li>
                             </ul>
                         </li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"testimonials.html\">Review</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"{{ path('app_testimonial') }}\">Review</a></li>
                         <li class=\"nav-item book-now\"><a class=\"nav-link js-scroll\" href=\"{{ path('app_appointment_new') }}\"><i class=\"fa fa-calendar-check-o\"></i> Book Appointment</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"contact.html\">Contact</a></li>
                         <!-- Add Create Account and Login buttons -->
@@ -537,7 +543,7 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
 
                 <div class=\"text-center mt-4\">
                     <button class=\"btn btn-custom\" type=\"submit\">Enregistrer</button>
-                    <a href=\"{{ path('app_vehicle_index') }}\" class=\"btn btn-outline-secondary\">Annuler</a>
+                    <a href=\"{{ path('app_appointment_new') }}\" class=\"btn btn-outline-secondary\">Annuler</a>
                 </div>
 
                 {{ form_rest(form) }}
@@ -659,6 +665,6 @@ class __TwigTemplate_be9be67fa71661a5ea7f48982eef5e3e extends Template
     </div>
     <!-- Back to Top End -->
 {% endblock %}
-", "vehicle/new.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\vehicle\\new.html.twig");
+", "vehicle/new.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\vehicle\\new.html.twig");
     }
 }

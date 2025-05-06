@@ -138,7 +138,10 @@ class __TwigTemplate_c50760133c9448dd3f8ffda2a89d406b extends Template
         // line 51
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_services");
         yield "\">Services</a></li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"products.html\">Products</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"";
+        // line 52
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("shop_home");
+        yield "\">Products</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"packages.html\">Packages</a></li>
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> Menu </a>
@@ -1147,7 +1150,7 @@ class __TwigTemplate_c50760133c9448dd3f8ffda2a89d406b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  1055 => 895,  1032 => 875,  1008 => 854,  755 => 604,  744 => 596,  733 => 588,  580 => 438,  355 => 216,  342 => 206,  329 => 196,  316 => 186,  303 => 176,  290 => 166,  254 => 133,  250 => 132,  246 => 131,  221 => 109,  217 => 108,  213 => 107,  178 => 75,  170 => 70,  166 => 69,  157 => 63,  153 => 62,  139 => 51,  135 => 50,  126 => 44,  122 => 43,  118 => 42,  83 => 10,  76 => 5,  63 => 4,  40 => 1,);
+        return array (  1058 => 895,  1035 => 875,  1011 => 854,  758 => 604,  747 => 596,  736 => 588,  583 => 438,  358 => 216,  345 => 206,  332 => 196,  319 => 186,  306 => 176,  293 => 166,  257 => 133,  253 => 132,  249 => 131,  224 => 109,  220 => 108,  216 => 107,  181 => 75,  173 => 70,  169 => 69,  160 => 63,  156 => 62,  143 => 52,  139 => 51,  135 => 50,  126 => 44,  122 => 43,  118 => 42,  83 => 10,  76 => 5,  63 => 4,  40 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -1203,7 +1206,7 @@ class __TwigTemplate_c50760133c9448dd3f8ffda2a89d406b extends Template
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll active\" href=\"{{ path('app_page') }}\">Home</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"{{ path('app_services') }}\">Services</a></li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"products.html\">Products</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"{{ path('shop_home') }}\">Products</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"packages.html\">Packages</a></li>
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> Menu </a>
@@ -2110,6 +2113,6 @@ class __TwigTemplate_c50760133c9448dd3f8ffda2a89d406b extends Template
     </div>
     <!-- Back to Top End -->
 {% endblock %}
-", "page/index.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\page\\index.html.twig");
+", "page/index.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\page\\index.html.twig");
     }
 }

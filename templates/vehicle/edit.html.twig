@@ -1,13 +1,125 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Vehicle{% endblock %}
+{% block title %}Modifier Véhicule{% endblock %}
 
 {% block body %}
-    <h1>Edit Vehicle</h1>
+    <div class="container my-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-danger text-white text-center py-4">
+                <h2 class="mb-0">Modifier le Véhicule</h2>
+            </div>
+            <div class="card-body p-4">
+                <!-- Formulaire -->
+                {{ form_start(form) }}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        {{ form_label(form.marque, 'Marque', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                        {{ form_widget(form.marque, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_label(form.modele, 'Modèle', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                        {{ form_widget(form.modele, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_label(form.motorisation, 'Motorisation', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                        {{ form_widget(form.motorisation, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_label(form.immatriculation, 'Immatriculation', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+                        {{ form_widget(form.immatriculation, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <button type="submit" class="btn btn-danger px-4 py-2">Mettre à jour</button>
+                    <a href="{{ path('espace_client') }}" class="btn btn-outline-secondary px-4 py-2">Retour à la liste</a>
+                </div>
+                {{ form_end(form) }}
 
-    {{ include('vehicle/_form.html.twig', {'button_label': 'Update'}) }}
+                <!-- Bouton Supprimer -->
+                <div class="text-end mt-3">
+                    {{ include('vehicle/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('app_vehicle_index') }}">back to list</a>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
-    {{ include('vehicle/_delete_form.html.twig') }}
+        .card {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #dc3545;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: none;
+        }
+
+        .form-label {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .form-control {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 5px rgba(220, 53, 69, 0.4);
+        }
+
+        .btn {
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #a71d2a;
+        }
+
+        .btn-outline-secondary {
+            border: 1px solid #6c757d;
+            color: #6c757d;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-outline-danger {
+            border: 1px solid #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .g-3 {
+            gap: 1.5rem;
+        }
+    </style>
 {% endblock %}

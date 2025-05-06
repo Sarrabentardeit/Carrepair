@@ -97,79 +97,63 @@ class __TwigTemplate_77042179004b607ed2c3b44b277bf0a8 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <h1>Détails du Rendez-vous</h1>
+        yield "    <div class=\"appointment-details-page container mt-5\">
+        <h1 class=\"text-center mb-4\">Détails du Rendez-vous</h1>
 
-    <table class=\"table\">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>";
-        // line 12
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 12, $this->source); })()), "id", [], "any", false, false, false, 12), "html", null, true);
+        <div class=\"card shadow-lg p-3 mb-5 bg-white rounded\">
+            <table class=\"table table-borderless\">
+                <tbody>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Id</th>
+                    <td>";
+        // line 14
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 14, $this->source); })()), "id", [], "any", false, false, false, 14), "html", null, true);
         yield "</td>
-        </tr>
-        <tr>
-            <th>Date du Rendez-vous</th>
-            <td>";
-        // line 16
-        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 16, $this->source); })()), "dateRendezVous", [], "any", false, false, false, 16)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 16, $this->source); })()), "dateRendezVous", [], "any", false, false, false, 16), "Y-m-d H:i:s"), "html", null, true)) : ("Non défini"));
+                </tr>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Date du Rendez-vous</th>
+                    <td>";
+        // line 18
+        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 18, $this->source); })()), "date", [], "any", false, false, false, 18)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 18, $this->source); })()), "date", [], "any", false, false, false, 18), "Y-m-d H:i:s"), "html", null, true)) : (""));
         yield "</td>
-        </tr>
-        <tr>
-            <th>Service Demandé</th>
-            <td>";
-        // line 20
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 20, $this->source); })()), "serviceDemande", [], "any", false, false, false, 20), "html", null, true);
+                </tr>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Service Demandé</th>
+                    <td>";
+        // line 22
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 22, $this->source); })()), "service", [], "any", false, false, false, 22), "html", null, true);
         yield "</td>
-        </tr>
-        <tr>
-            <th>Véhicule</th>
-            <td>
-                ";
-        // line 25
-        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 25, $this->source); })()), "vehicule", [], "any", false, false, false, 25)) {
-            // line 26
-            yield "                    ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 26, $this->source); })()), "vehicule", [], "any", false, false, false, 26), "marque", [], "any", false, false, false, 26), "html", null, true);
-            yield " - ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 26, $this->source); })()), "vehicule", [], "any", false, false, false, 26), "modele", [], "any", false, false, false, 26), "html", null, true);
-            yield "
-                    (Immatriculation: ";
-            // line 27
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 27, $this->source); })()), "vehicule", [], "any", false, false, false, 27), "immatriculation", [], "any", false, false, false, 27), "html", null, true);
-            yield ")
-                ";
-        } else {
-            // line 29
-            yield "                    Non défini
-                ";
-        }
-        // line 31
-        yield "            </td>
-        </tr>
-        <tr>
-            <th>Statut</th>
-            <td>";
-        // line 35
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 35, $this->source); })()), "statut", [], "any", false, false, false, 35), "html", null, true);
-        yield "</td>
-        </tr>
-        </tbody>
-    </table>
+                </tr>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Statut</th>
+                    <td><span class=\"badge badge-warning\">";
+        // line 26
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 26, $this->source); })()), "statut", [], "any", false, false, false, 26), "html", null, true);
+        yield "</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <a href=\"";
-        // line 40
+        <div class=\"d-flex justify-content-between mt-4\">
+            <a href=\"";
+        // line 33
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_appointment_index");
-        yield "\" class=\"btn btn-secondary\">Retour à la liste</a>
-    <a href=\"";
-        // line 41
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_appointment_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 41, $this->source); })()), "id", [], "any", false, false, false, 41)]), "html", null, true);
-        yield "\" class=\"btn btn-primary\">Modifier</a>
-
-    ";
-        // line 43
-        yield Twig\Extension\CoreExtension::include($this->env, $context, "appointment/_delete_form.html.twig");
+        yield "\" class=\"btn btn-outline-dark\">
+                <i class=\"fa fa-arrow-left\"></i> Retour à la liste
+            </a>
+            <a href=\"";
+        // line 36
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_appointment_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["appointment"]) || array_key_exists("appointment", $context) ? $context["appointment"] : (function () { throw new RuntimeError('Variable "appointment" does not exist.', 36, $this->source); })()), "id", [], "any", false, false, false, 36)]), "html", null, true);
+        yield "\" class=\"btn btn-primary\">
+                <i class=\"fa fa-pencil\"></i> Modifier
+            </a>
+            ";
+        // line 39
+        yield Twig\Extension\CoreExtension::include($this->env, $context, "appointment/_delete_form.html.twig", ["class" => "btn btn-danger"]);
         yield "
+        </div>
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -201,7 +185,7 @@ class __TwigTemplate_77042179004b607ed2c3b44b277bf0a8 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  171 => 43,  166 => 41,  162 => 40,  154 => 35,  148 => 31,  144 => 29,  139 => 27,  132 => 26,  130 => 25,  122 => 20,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  153 => 39,  147 => 36,  141 => 33,  131 => 26,  124 => 22,  117 => 18,  110 => 14,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -211,45 +195,43 @@ class __TwigTemplate_77042179004b607ed2c3b44b277bf0a8 extends Template
 {% block title %}Détails du Rendez-vous{% endblock %}
 
 {% block body %}
-    <h1>Détails du Rendez-vous</h1>
+    <div class=\"appointment-details-page container mt-5\">
+        <h1 class=\"text-center mb-4\">Détails du Rendez-vous</h1>
 
-    <table class=\"table\">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ appointment.id }}</td>
-        </tr>
-        <tr>
-            <th>Date du Rendez-vous</th>
-            <td>{{ appointment.dateRendezVous ? appointment.dateRendezVous|date('Y-m-d H:i:s') : 'Non défini' }}</td>
-        </tr>
-        <tr>
-            <th>Service Demandé</th>
-            <td>{{ appointment.serviceDemande }}</td>
-        </tr>
-        <tr>
-            <th>Véhicule</th>
-            <td>
-                {% if appointment.vehicule %}
-                    {{ appointment.vehicule.marque }} - {{ appointment.vehicule.modele }}
-                    (Immatriculation: {{ appointment.vehicule.immatriculation }})
-                {% else %}
-                    Non défini
-                {% endif %}
-            </td>
-        </tr>
-        <tr>
-            <th>Statut</th>
-            <td>{{ appointment.statut }}</td>
-        </tr>
-        </tbody>
-    </table>
+        <div class=\"card shadow-lg p-3 mb-5 bg-white rounded\">
+            <table class=\"table table-borderless\">
+                <tbody>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Id</th>
+                    <td>{{ appointment.id }}</td>
+                </tr>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Date du Rendez-vous</th>
+                    <td>{{ appointment.date ? appointment.date|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Service Demandé</th>
+                    <td>{{ appointment.service }}</td>
+                </tr>
+                <tr>
+                    <th scope=\"row\" class=\"text-primary\">Statut</th>
+                    <td><span class=\"badge badge-warning\">{{ appointment.statut }}</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <a href=\"{{ path('app_appointment_index') }}\" class=\"btn btn-secondary\">Retour à la liste</a>
-    <a href=\"{{ path('app_appointment_edit', {'id': appointment.id}) }}\" class=\"btn btn-primary\">Modifier</a>
-
-    {{ include('appointment/_delete_form.html.twig') }}
+        <div class=\"d-flex justify-content-between mt-4\">
+            <a href=\"{{ path('app_appointment_index') }}\" class=\"btn btn-outline-dark\">
+                <i class=\"fa fa-arrow-left\"></i> Retour à la liste
+            </a>
+            <a href=\"{{ path('app_appointment_edit', {'id': appointment.id}) }}\" class=\"btn btn-primary\">
+                <i class=\"fa fa-pencil\"></i> Modifier
+            </a>
+            {{ include('appointment/_delete_form.html.twig', { 'class': 'btn btn-danger' }) }}
+        </div>
+    </div>
 {% endblock %}
-", "appointment/show.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\appointment\\show.html.twig");
+", "appointment/show.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\appointment\\show.html.twig");
     }
 }

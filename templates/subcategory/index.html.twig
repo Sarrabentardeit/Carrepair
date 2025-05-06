@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Liste des sous-catégories</h1>
+
+    <a href="{{ path('subcategory_new') }}" class="btn btn-primary mb-3">Créer une nouvelle sous-catégorie</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subCategory in subcategories %}
+            <tr>
+                <td>{{ subCategory.id }}</td>
+                <td>{{ subCategory.name }}</td>
+                <td>
+                    <a href="{{ path('subcategory_show', { id: subCategory.id }) }}" class="btn btn-info">Afficher</a>
+                    <a href="{{ path('subcategory_edit', { id: subCategory.id }) }}" class="btn btn-warning">Modifier</a>
+                    <form method="post" action="{{ path('subcategory_delete', { id: subCategory.id }) }}" style="display: inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ subCategory.id) }}">
+                        <button class="btn btn-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune sous-catégorie trouvée.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

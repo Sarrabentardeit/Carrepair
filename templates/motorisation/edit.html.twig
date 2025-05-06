@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Motorisation{% endblock %}
+
+{% block body %}
+    <h1>Edit Motorisation</h1>
+
+    {{ include('motorisation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_motorisation_index') }}">back to list</a>
+
+    {{ include('motorisation/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,11 +1,182 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Product{% endblock %}
+{% block title %}Créer un Nouveau Produit{% endblock %}
 
 {% block body %}
-    <h1>Create new Product</h1>
+    <div class="container mt-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-dark text-white text-center py-3">
+                <h2>Créer un Nouveau Produit</h2>
+            </div>
+            <div class="card-body" style="background-color: #f8f9fa; color: #343a40;">
+                {{ form_start(form, {'attr': {'enctype': 'multipart/form-data', 'class': 'p-4'}}) }}
 
-    {{ include('product/_form.html.twig') }}
+                <!-- Section: Détails du Produit -->
+                <h5 class="text-dark border-bottom pb-2 mb-4">Détails du Produit</h5>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        {{ form_row(form.nom, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.prix, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-12">
+                        {{ form_row(form.description, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.quantiteEnStock, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.dateAjout, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.subCategory, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                </div>
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+                <!-- Section: Vehicule -->
+                <h5 class="text-dark border-bottom pb-2 mt-5 mb-4">Détails Vehicule</h5>
+
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+                        {{ form_row(form.marque, {'attr': {'class': 'form-control select-marque'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.modele, {'attr': {'class': 'form-control select-modele'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.motorisations, {'attr': {'class': 'form-control select-motorisations'}}) }}
+                    </div>
+
+                </div>
+
+
+
+                <!-- Section: Détails SEO -->
+                <h5 class="text-dark border-bottom pb-2 mt-5 mb-4">Détails SEO</h5>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        {{ form_row(form.seoTitre, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.seoDescription, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.slug, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.motsCles, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-12">
+                        {{ form_row(form.textePromotion, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.indexable, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-check-input'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.canonicalUrl, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                </div>
+
+                <!-- Section: Image du Produit -->
+                <h5 class="text-dark border-bottom pb-2 mt-5 mb-4">Image du Produit</h5>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        {{ form_row(form.image, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.texteAlternatif, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.titreImage, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.descriptionImage, {'label_attr': {'class': 'text-dark'}, 'attr': {'class': 'form-control bg-white text-dark'}}) }}
+                    </div>
+                </div>
+
+                <!-- Section: Boutons -->
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="submit" class="btn btn-danger px-5 py-2 rounded-pill">Enregistrer</button>
+                    <a href="{{ path('app_product_index') }}" class="btn btn-outline-dark ms-3 px-5 py-2 rounded-pill">Retour à la Liste</a>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const marqueSelect = document.querySelector('.select-marque');
+                const modeleSelect = document.querySelector('.select-modele');
+                const motorisationSelect = document.querySelector('.select-motorisations');
+
+                // Événement pour le changement de marque
+                marqueSelect.addEventListener('change', async (event) => {
+                    console.log('Changement détecté dans le champ Marque.');
+                    const marqueId = event.target.value;
+
+                    // Réinitialiser les listes déroulantes dépendantes
+                    modeleSelect.innerHTML = '<option value="">Sélectionnez un modèle</option>';
+                    motorisationSelect.innerHTML = '<option value="">Sélectionnez des motorisations</option>';
+
+                    if (marqueId) {
+                        try {
+                            // Requête à l'API pour récupérer les modèles
+                            const response = await fetch(`/modele/api/models?marque=${marqueId}`);
+                            const models = await response.json();
+                            console.log('Données reçues de l\'API pour les modèles :', models);
+
+                            // Ajout des options à la liste déroulante des modèles
+                            models.forEach(model => {
+                                if (!Array.from(modeleSelect.options).some(option => option.value == model.id)) {
+                                    const option = document.createElement('option');
+                                    option.value = model.id;
+                                    option.textContent = model.nom;
+                                    modeleSelect.appendChild(option);
+                                }
+                            });
+                        } catch (error) {
+                            console.error('Erreur lors du chargement des modèles :', error);
+                        }
+                    }
+                });
+
+                // Événement pour le changement de modèle
+                modeleSelect.addEventListener('change', async (event) => {
+                    const modeleId = event.target.value;
+
+                    // Réinitialisation de la liste des motorisations à chaque changement de modèle
+                    motorisationSelect.innerHTML = '<option value="">Sélectionnez des motorisations</option>';
+
+                    if (modeleId) {
+                        try {
+                            // Requête à l'API pour récupérer les motorisations associées au modèle sélectionné
+                            const response = await fetch(`/motorisation/api/motorisations?modele=${modeleId}`);
+                            const motorisations = await response.json();
+
+                            // On garde une trace des motorisations déjà ajoutées pour éviter les doublons
+                            const existingOptions = Array.from(motorisationSelect.options).map(option => option.value);
+
+                            motorisations.forEach(motorisation => {
+                                // Vérifier si la motorisation est déjà présente dans la liste
+                                if (!existingOptions.includes(motorisation.id.toString())) {
+                                    const option = document.createElement('option');
+                                    option.value = motorisation.id;
+                                    option.textContent = motorisation.nom;
+                                    motorisationSelect.appendChild(option);
+                                }
+                            });
+                        } catch (error) {
+                            // En cas d'erreur lors de la récupération des motorisations
+                            console.error('Erreur lors du chargement des motorisations :', error);
+                        }
+                    }
+                });
+            });
+        </script>
+    {% endblock %}
+
 {% endblock %}

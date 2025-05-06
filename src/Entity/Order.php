@@ -19,39 +19,86 @@ class Order
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\NotNull]
+    #[Assert\NotNull(message: "La date de commande est obligatoire.")]
     private ?\DateTimeInterface $dateCommande = null;
 
     #[ORM\Column(type: Types::FLOAT)]
-    #[Assert\NotNull]
-    #[Assert\PositiveOrZero]
+    #[Assert\NotNull(message: "Le montant total est obligatoire.")]
+    #[Assert\PositiveOrZero(message: "Le montant total doit être positif.")]
     private ?float $montantTotal = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: "Le statut est obligatoire.")]
     private ?string $statut = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "orders")]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $client = null;
 
     #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: "orders")]
     #[ORM\JoinTable(name: "order_products")]
     private Collection $produits;
 
-    // Statuts possibles
-    public const STATUS_PENDING = 'En attente';
-    public const STATUS_COMPLETED = 'Complétée';
-    public const STATUS_CANCELED = 'Annulée';
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: "Le nom est obligatoire.")]
+    private ?string $nom = null;
 
+    #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "L'email est obligatoire.")]
+    #[Assert\Email(message: "Veuillez entrer un email valide.")]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 15)]
+    #[Assert\NotBlank(message: "Le téléphone est obligatoire.")]
+    #[Assert\Regex(
+        pattern: '/^[0-9]{8,15}$/',
+        message: "Veuillez entrer un numéro de téléphone valide."
+    )]
+    private ?string $telephone = null;
+    #[ORM\Column(type: 'json')]
+    private array $produitsCommande = []; // Initialisation par défaut avec un tableau vide
+
+
+    #[ORM\Column(length: 50)]
+    private ?string $typeLivraison = null;
+
+    public function getProduitsCommande(): array
+    {
+        return $this->produitsCommande;
+    }
+
+    public function setProduitsCommande(array $produitsCommande): self
+    {
+        $this->produitsCommande = $produitsCommande;
+        return $this;
+    }
+
+    public function getTypeLivraison(): ?string
+    {
+        return $this->typeLivraison;
+    }
+
+    public function setTypeLivraison(string $typeLivraison): self
+    {
+        $this->typeLivraison = $typeLivraison;
+        return $this;
+    }
     public function __construct()
     {
         $this->produits = new ArrayCollection();
         $this->dateCommande = new \DateTime();
         $this->statut = self::STATUS_PENDING;
+        $this->montantTotal = 0.0; // Initialisation par défaut
+
     }
 
-    // --- Getters & Setters ---
+    public const STATUS_PENDING = 'En attente';
+    public const STATUS_COMPLETED = 'Complétée';
+    public const STATUS_CANCELED = 'Annulée';
     public function getId(): ?int
     {
         return $this->id;
@@ -101,9 +148,50 @@ class Order
         return $this;
     }
 
-    /**
-     * @return Collection<int, Product>
-     */
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
+        return $this;
+    }
+
     public function getProduits(): Collection
     {
         return $this->produits;
@@ -113,16 +201,13 @@ class Order
     {
         if (!$this->produits->contains($produit)) {
             $this->produits[] = $produit;
-            $produit->addOrder($this);
         }
         return $this;
     }
 
     public function removeProduit(Product $produit): self
     {
-        if ($this->produits->removeElement($produit)) {
-            $produit->removeOrder($this);
-        }
+        $this->produits->removeElement($produit);
         return $this;
     }
 
@@ -133,15 +218,5 @@ class Order
             $this->montantTotal += $produit->getPrix();
         }
         return $this->montantTotal;
-    }
-
-    public function processOrder(): void
-    {
-        foreach ($this->produits as $produit) {
-            if ($produit->getQuantiteEnStock() < 1) {
-                throw new \Exception("Le produit {$produit->getNom()} est en rupture de stock.");
-            }
-            $produit->setQuantiteEnStock($produit->getQuantiteEnStock() - 1);
-        }
     }
 }

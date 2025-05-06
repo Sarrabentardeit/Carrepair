@@ -1,45 +1,154 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Gestion des Utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <div class="admin-dashboard">
+        <div class="d-flex">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="bg-dark text-white vh-100">
+                <h5 class="text-center text-uppercase fw-bold mb-4 py-3">Admin Panel</h5>
+                <ul class="nav flex-column px-3">
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}" href="{{ path('app_admin_dashboard') }}">
+                            <i class="bi bi-house-door"></i> Tableau de bord
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}" href="{{ path('app_register_admin') }}">
+                            <i class="bi bi-person-plus me-2"></i> Ajouter un Admin
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}" href="{{ path('app_user_index') }}">
+                            <i class="bi bi-person-lines-fill me-2"></i> Gérer les Utilisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}" href="{{ path('admin_rendezvous') }}">
+                            <i class="bi bi-calendar-check me-2"></i> Gérer les Rendez-vous
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}" href="{{ path('app_product_index') }}">
+                            <i class="bi bi-box me-2"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}" href="{{ path('admin_vehicules') }}">
+                            <i class="bi bi-box me-2"></i> Gérer les Véhicules
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}" href="{{ path('admin_orders') }}">
+                            <i class="bi bi-box me-2"></i> Gérer les Commandes
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Telephone</th>
-                <th>Roles</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.telephone }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <!-- Main Content -->
+            <main class="flex-grow-1 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="fw-bold">Gestion des Utilisateurs</h1>
+                    <a href="{{ path('app_user_new') }}" class="btn btn-success rounded-pill">+ Ajouter un Utilisateur</a>
+                </div>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+                <table class="table table-hover shadow-sm">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Téléphone</th>
+                        <th>Rôles</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in pagination.items %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.nom }}</td>
+                            <td>{{ user.prenom }}</td>
+                            <td>{{ user.telephone }}</td>
+                            <td>
+                                {% for role in user.roles %}
+                                    <span class="badge bg-info text-dark">{{ role }}</span>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-outline-primary btn-sm rounded-pill">Voir</a>
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-outline-warning btn-sm rounded-pill">Modifier</a>
+                                <form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');" style="display: inline;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                                    <button class="btn btn-outline-danger btn-sm rounded-pill" type="submit">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">Aucun utilisateur trouvé.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+                <div class="d-flex justify-content-center mt-4">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <style>
+        .pagination a, .pagination span {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #dc3545;
+        }
+
+        .pagination a:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .pagination .active span {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545 ;
+        }
+
+        .btn {
+            border-radius: 5px;
+        }
+
+        .btn-success {
+            background-color: #198754;
+        }
+
+        .btn-success:hover {
+            background-color: #145c39;
+        }
+
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .table-dark {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
 {% endblock %}

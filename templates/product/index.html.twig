@@ -1,43 +1,143 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index{% endblock %}
+{% block title %}Gestion des Produits{% endblock %}
 
 {% block body %}
-    <h1>Product index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prix</th>
-                <th>Description</th>
-                <th>QuantiteEnStock</th>
-                <th>DateAjout</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.nom }}</td>
-                <td>{{ product.prix }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.quantiteEnStock }}</td>
-                <td>{{ product.dateAjout ? product.dateAjout|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="admin-dashboard">
+        <div class="d-flex">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="bg-dark text-white vh-100">
+                <h5 class="text-center text-uppercase fw-bold mb-4">Admin Panel</h5>
+                <ul class="nav flex-column px-3">
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}" href="{{ path('app_admin_dashboard') }}">
+                            <i class="bi bi-house-door"></i> Tableau de bord
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}" href="{{ path('app_register_admin') }}">
+                            <i class="bi bi-person-plus"></i> Ajouter un Admin
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}" href="{{ path('app_user_index') }}">
+                            <i class="bi bi-person-lines-fill"></i> Gérer les Utilisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}" href="{{ path('admin_rendezvous') }}">
+                            <i class="bi bi-calendar-check"></i> Gérer les Rendez-vous
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}" href="{{ path('app_product_index') }}">
+                            <i class="bi bi-box"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}" href="{{ path('admin_vehicules') }}">
+                            <i class="bi bi-box"></i> Gérer les Véhicules
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}" href="{{ path('admin_orders') }}">
+                            <i class="bi bi-box"></i> Gérer les Commandes
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-    <a href="{{ path('app_product_new') }}">Create new</a>
+            <!-- Main Content -->
+            <main class="flex-grow-1 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="text-danger fw-bold">Gestion des Produits</h1>
+                    <div>
+                        <a href="{{ path('app_category_new') }}" class="btn btn-primary rounded-pill">+ Créer une Catégorie</a>
+                        <a href="{{ path('subcategory_new') }}" class="btn btn-success rounded-pill">+ Créer une Sous-catégorie</a>
+                        <a href="{{ path('app_product_new') }}" class="btn btn-danger rounded-pill">+ Créer un Produit</a>
+                    </div>
+                </div>
+
+                <table class="table table-hover shadow-sm">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Description</th>
+                        <th>Quantité en Stock</th>
+                        <th>Date d'Ajout</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in pagination.items %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.nom }}</td>
+                            <td>{{ product.prix }} TND</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.quantiteEnStock }}</td>
+                            <td>{{ product.dateAjout ? product.dateAjout|date('d/m/Y H:i') : '' }}</td>
+                            <td>
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-outline-info btn-sm rounded-pill">Voir</a>
+                                <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-outline-warning btn-sm rounded-pill">Modifier</a>
+                                <form method="post" action="{{ path('app_product_delete', {'id': product.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                    <button class="btn btn-outline-danger btn-sm rounded-pill">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">Aucun produit trouvé</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+                <div class="d-flex justify-content-center mt-4">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+                {% if produit is defined %}
+                    <div class="mt-5">
+                        <h3 class="text-danger">Détails du Produit</h3>
+                        <p><strong>Nom :</strong> {{ produit.nom }}</p>
+                        <p><strong>Prix :</strong> {{ produit.prix }} TND</p>
+                        <p><strong>Motorisations Compatibles :</strong></p>
+                        <ul>
+                            {% for motorisation in produit.compatibilites %}
+                                <li>{{ motorisation.nom }} ({{ motorisation.modele.nom }} - {{ motorisation.modele.marque.nom }})</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </main>
+
+
+        </div>
+    </div>
+
+        <style> .pagination a, .pagination span {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #dc3545;
+        }
+
+        .pagination a:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .pagination .active span {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545 ;
+        }</style>
+
+
 {% endblock %}

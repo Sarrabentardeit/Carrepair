@@ -1,0 +1,62 @@
+<div class="container mt-4">
+    <h1 class="mb-4">Recherche dans la catégorie : {{ subCategory.name }}</h1>
+
+    <form method="get" action="{{ path('subcategory_search', { id: subCategory.id }) }}" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <label for="marque" class="form-label">Marque</label>
+            <select id="marque" name="marque" class="form-select">
+                <option value="">-- Toutes les marques --</option>
+                {% for marque in marques %}
+                    <option value="{{ marque.id }}" {% if criteria.marque == marque.id %}selected{% endif %}>
+                        {{ marque.nom }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="modele" class="form-label">Modèle</label>
+            <select id="modele" name="modele" class="form-select">
+                <option value="">-- Tous les modèles --</option>
+                {% for modele in modeles %}
+                    <option value="{{ modele.id }}" {% if criteria.modele == modele.id %}selected{% endif %}>
+                        {{ modele.nom }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="motorisation" class="form-label">Motorisation</label>
+            <select id="motorisation" name="motorisation" class="form-select">
+                <option value="">-- Toutes les motorisations --</option>
+                {% for motorisation in motorisations %}
+                    <option value="{{ motorisation.id }}" {% if criteria.motorisation == motorisation.id %}selected{% endif %}>
+                        {{ motorisation.nom }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </div>
+    </form>
+
+    <h2>Produits compatibles</h2>
+    {% if products is not empty %}
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="/uploads/{{ product.image }}" class="card-img-top" alt="{{ product.nom }}" onerror="this.style.display='none'">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.nom }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text"><strong>Prix :</strong> {{ product.prix }} TND</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun produit compatible trouvé.</p>
+    {% endif %}
+</div>

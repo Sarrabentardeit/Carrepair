@@ -3,10 +3,109 @@
 {% block title %}Enregistrement d'un Administrateur{% endblock %}
 
 {% block body %}
-    <h1>Créer un Compte Administrateur</h1>
+    <div class="admin-dashboard">
+        <div class="d-flex">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="bg-dark text-white vh-100">
+                <h5 class="text-center text-uppercase fw-bold mb-4 py-3">Admin Panel</h5>
+                <ul class="nav flex-column px-3">
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'active' : '' }}" href="{{ path('app_admin_dashboard') }}">
+                            <i class="bi bi-house-door"></i> Tableau de bord
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_register_admin' ? 'active' : '' }}" href="{{ path('app_register_admin') }}">
+                            <i class="bi bi-person-plus me-2"></i> Ajouter un Admin
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_user_index' ? 'active' : '' }}" href="{{ path('app_user_index') }}">
+                            <i class="bi bi-person-lines-fill me-2"></i> Gérer les Utilisateurs
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_rendezvous' ? 'active' : '' }}" href="{{ path('admin_rendezvous') }}">
+                            <i class="bi bi-calendar-check me-2"></i> Gérer les Rendez-vous
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'app_product_index' ? 'active' : '' }}" href="{{ path('app_product_index') }}">
+                            <i class="bi bi-box me-2"></i> Gérer les Produits
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_vehicules' ? 'active' : '' }}" href="{{ path('admin_vehicules') }}">
+                            <i class="bi bi-box me-2"></i> Gérer les Véhicules
+                        </a>
+                    </li>
+                    <li class="nav-item mb-3">
+                        <a class="nav-link text-white {{ app.request.attributes.get('_route') == 'admin_orders' ? 'active' : '' }}" href="{{ path('admin_orders') }}">
+                            <i class="bi bi-box me-2"></i> Gérer les Commandes
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-    {{ form_start(registrationForm) }}
-    {{ form_widget(registrationForm) }}
-    <button class="btn btn-primary">Créer Administrateur</button>
-    {{ form_end(registrationForm) }}
+            <!-- Main Content -->
+            <main class="flex-grow-1 p-4">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-danger text-white text-center">
+                        <h3 class="fw-bold mb-0">Créer un Compte Administrateur</h3>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(registrationForm) }}
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold">Adresse Email</label>
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez l\'email'}}) }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nom" class="form-label fw-bold">Nom</label>
+                                {{ form_widget(registrationForm.nom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le nom'}}) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="prenom" class="form-label fw-bold">Prénom</label>
+                                {{ form_widget(registrationForm.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le prénom'}}) }}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label fw-bold">Mot de passe</label>
+                            {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le mot de passe'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm_password" class="form-label fw-bold">Confirmez le Mot de passe</label>
+                            {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmez le mot de passe'}}) }}
+                        </div>
+                        <button class="btn btn-danger w-100 py-2 mt-3">Créer Administrateur</button>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <style>
+        .card {
+            border-radius: 10px;
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #a71d2a;
+        }
+    </style>
 {% endblock %}

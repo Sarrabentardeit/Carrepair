@@ -69,7 +69,7 @@ final class VehicleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_vehicle_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('espace_client', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('vehicle/edit.html.twig', [

@@ -155,6 +155,6 @@ class __TwigTemplate_146aff18da60104ae80d693a6ff5a450 extends Template
 
     <a href=\"{{ path('app_stock_movement_index') }}\">back to list</a>
 {% endblock %}
-", "stock_movement/new.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\stock_movement\\new.html.twig");
+", "stock_movement/new.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\stock_movement\\new.html.twig");
     }
 }

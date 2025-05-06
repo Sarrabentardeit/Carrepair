@@ -1,46 +1,105 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Détails de l'Utilisateur{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <div class="container my-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-danger text-white text-center">
+                <h3>Détails de l'Utilisateur</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <th scope="row" class="bg-light">ID</th>
+                        <td>{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="bg-light">Email</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="bg-light">Mot de passe</th>
+                        <td>{{ user.password }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="bg-light">Nom</th>
+                        <td>{{ user.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="bg-light">Prénom</th>
+                        <td>{{ user.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="bg-light">Téléphone</th>
+                        <td>{{ user.telephone }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="bg-light">Rôles</th>
+                        <td>
+                            {% for role in user.roles %}
+                                <span class="badge bg-dark text-white">{{ role }}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ user.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ user.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ user.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{{ path('app_user_index') }}" class="btn btn-secondary">Retour à la liste</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-danger">Modifier</a>
+                    {{ include('user/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+    <style>
+        .table th {
+            width: 30%;
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
 
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+        .table td {
+            vertical-align: middle;
+        }
 
-    {{ include('user/_delete_form.html.twig') }}
+        .btn {
+            border-radius: 5px;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #a71d2a;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .card {
+            border-radius: 10px;
+        }
+
+        .card-header {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .badge.bg-dark {
+            background-color: #343a40;
+        }
+    </style>
 {% endblock %}

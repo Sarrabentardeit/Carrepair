@@ -102,7 +102,10 @@ class __TwigTemplate_0427cbd1db117cf79d312fa5083deeb4 extends Template
         <div class=\"preloader-wapper\">
             <div>
                 <div class=\"spinner-loader\">
-                    <img src=\"assets/images/loader.svg\" alt=\"laoder\">
+                    <img src=\"";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/loader.svg"), "html", null, true);
+        yield "\" alt=\"laoder\">
                 </div>
             </div>
         </div>
@@ -159,7 +162,10 @@ class __TwigTemplate_0427cbd1db117cf79d312fa5083deeb4 extends Template
         // line 52
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_services");
         yield "\">Services</a></li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"products.html\">Products</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"";
+        // line 53
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("shop_home");
+        yield "\">Products</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"packages.html\">Packages</a></li>
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> Menu </a>
@@ -441,7 +447,7 @@ class __TwigTemplate_0427cbd1db117cf79d312fa5083deeb4 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  199 => 76,  191 => 71,  187 => 70,  178 => 64,  174 => 63,  160 => 52,  156 => 51,  147 => 45,  143 => 44,  139 => 43,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  205 => 76,  197 => 71,  193 => 70,  184 => 64,  180 => 63,  167 => 53,  163 => 52,  159 => 51,  150 => 45,  146 => 44,  142 => 43,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -456,7 +462,7 @@ class __TwigTemplate_0427cbd1db117cf79d312fa5083deeb4 extends Template
         <div class=\"preloader-wapper\">
             <div>
                 <div class=\"spinner-loader\">
-                    <img src=\"assets/images/loader.svg\" alt=\"laoder\">
+                    <img src=\"{{ asset('assets/images/loader.svg') }}\" alt=\"laoder\">
                 </div>
             </div>
         </div>
@@ -498,7 +504,7 @@ class __TwigTemplate_0427cbd1db117cf79d312fa5083deeb4 extends Template
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll active\" href=\"{{ path('app_page') }}\">Home</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"{{ path('app_services') }}\">Services</a></li>
-                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"products.html\">Products</a></li>
+                        <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"{{ path('shop_home') }}\">Products</a></li>
                         <li class=\"nav-item\"><a class=\"nav-link js-scroll\" href=\"packages.html\">Packages</a></li>
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> Menu </a>
@@ -735,6 +741,6 @@ class __TwigTemplate_0427cbd1db117cf79d312fa5083deeb4 extends Template
     </div>
     <!-- Back to Top End -->
 {% endblock %}
-", "services/index.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\services\\index.html.twig");
+", "services/index.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\services\\index.html.twig");
     }
 }

@@ -94,6 +94,6 @@ class __TwigTemplate_f291980f262b9e6106aff63e385e9883 extends Template
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ order.id) }}\">
     <button class=\"btn\">Delete</button>
 </form>
-", "order/_delete_form.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\order\\_delete_form.html.twig");
+", "order/_delete_form.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\order\\_delete_form.html.twig");
     }
 }

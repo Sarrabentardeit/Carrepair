@@ -170,6 +170,6 @@ class __TwigTemplate_9d399b8d977ffeb5a4d833d9bd54ca99 extends Template
     </ul>
 </div>
 {% endblock %}
-", "admin_dashboard/index.html.twig", "C:\\xampp\\htdocs\\Carservice-main\\templates\\admin_dashboard\\index.html.twig");
+", "admin_dashboard/index.html.twig", "C:\\xampp\\htdocs\\Carservice\\templates\\admin_dashboard\\index.html.twig");
     }
 }
